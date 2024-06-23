@@ -21,6 +21,12 @@ class userManager {
 
 class Post {
   constructor() {
+
+  }
+}
+
+class Comment {
+  constructor() {
     
   }
 }
