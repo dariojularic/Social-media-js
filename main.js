@@ -18,3 +18,9 @@ class userManager {
     this.usersArray = []
   }
 }
+
+class Post {
+  constructor() {
+    
+  }
+}
