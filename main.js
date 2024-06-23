@@ -15,6 +15,6 @@ class User {
 
 class userManager {
   constructor() {
-    
+    this.usersArray = []
   }
 }
