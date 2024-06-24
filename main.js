@@ -20,13 +20,18 @@ class userManager {
 }
 
 class Post {
-  constructor() {
-
+  constructor(owner, img, date, textContent, likes) {
+    this.owner = owner
+    this.img = img
+    this.date = date
+    this.textContent = textContent
+    this.likes = likes 
   }
 }
 
 class Comment {
-  constructor() {
-    
+  constructor(owner, textContent, img) {
+
   }
 }
+
