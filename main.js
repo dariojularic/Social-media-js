@@ -24,6 +24,7 @@ class userManager {
 
 class Post {
   constructor(owner, img, date, textContent, likes) {
+    this.id = crypto.randomUUID()
     this.owner = owner
     this.img = img
     this.date = date
@@ -34,6 +35,7 @@ class Post {
 
 class Comment {
   constructor(owner, textContent, img) {
+    this.id = crypto.randomUUID()
     this.owner = owner
     this.textContent = textContent
     this.img = img
@@ -49,4 +51,7 @@ class Friend {
   }
 }
 
-console.log(user.friends)
+
+const newUser = new User(user.name, user.lastName, user.img, user.address, user.friends, user.posts, user.comments, user.likes)
+// console.log(user.friends)
+console.log(newUser)

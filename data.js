@@ -3,7 +3,7 @@ export const user = {
   name: "Mario",
   lastName: "Milosevic",
   img: "img/profile5.png",
-  adress: {
+  address: {
     country: "Montenegro",
     city: "Kotor",
     street: "Novo Naselje b.b.",
