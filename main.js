@@ -1,7 +1,10 @@
 import './style.css'
+import { user } from './data'
+
 
 class User {
   constructor(firstName, lastName, img, address, friends, posts, comments, likes) {
+    this.id = crypto.randomUUID()
     this.firstName = firstName
     this.lastName = lastName
     this.img = img
@@ -31,7 +34,19 @@ class Post {
 
 class Comment {
   constructor(owner, textContent, img) {
-
+    this.owner = owner
+    this.textContent = textContent
+    this.img = img
   }
 }
 
+class Friend {
+  constructor(firstName, lastName, img) {
+    this.id = crypto.randomUUID()
+    this.firstName = firstName
+    this.lastName = lastName
+    this.img = img
+  }
+}
+
+console.log(user.friends)
