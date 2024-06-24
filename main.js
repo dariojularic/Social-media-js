@@ -3,33 +3,49 @@ import { user } from './data'
 
 
 class User {
-  constructor(firstName, lastName, img, address, friends, posts, comments, likes) {
+  constructor(firstName, lastName, img, address, friends) {
     this.id = crypto.randomUUID()
     this.firstName = firstName
     this.lastName = lastName
     this.img = img
     this.address = address
     this.friends = friends
-    this.posts = posts
-    this.comments = comments
-    this.likes = likes
+    this.posts = []
   }
-}
 
-class userManager {
-  constructor() {
-    this.usersArray = []
+  addPost(post) {
+    this.posts.push(post)
+  }
+
+  renderPosts() {
+    this.posts.forEach(post => {
+      const html = `<li>
+                      <div class="post"></div>
+                      <div class="post-buttons"></div>
+                      <div class="add-comment"></div>
+                      <div class="all-comments"></div>
+                    </li>`
+    })
   }
 }
 
 class Post {
-  constructor(owner, img, date, textContent, likes) {
+  constructor(owner, img, date, textContent) {
     this.id = crypto.randomUUID()
     this.owner = owner
     this.img = img
     this.date = date
     this.textContent = textContent
-    this.likes = likes 
+    this.likes = []
+    this.comments = [] 
+  }
+
+  addComment(comment) {
+    this.comments.push(comment)
+  }
+
+  addLike(like) {
+    this.likes.push(like)
   }
 }
 
@@ -42,16 +58,17 @@ class Comment {
   }
 }
 
-class Friend {
-  constructor(firstName, lastName, img) {
-    this.id = crypto.randomUUID()
+class Like {
+  constructor(firstName, lastName) {
     this.firstName = firstName
     this.lastName = lastName
-    this.img = img
   }
 }
 
 
-const newUser = new User(user.name, user.lastName, user.img, user.address, user.friends, user.posts, user.comments, user.likes)
-// console.log(user.friends)
+const newUser = new User(user.name, user.lastName, user.img, user.address, user.friends)
+// , user.posts, user.comments, user.likes) za ovaj dio idu metode
+// console.log(user.friends) 
+console.log(newUser)
+user.posts.forEach(post => newUser.posts.push(post))
 console.log(newUser)
