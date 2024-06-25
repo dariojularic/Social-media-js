@@ -1,0 +1,30 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #E6E6FF;
+}
+
+.profile-picture-small {
+  border-radius: 50%;
+  height: 40px;
+  width: 40px;
+}
+
+.search-bar {
+  align-self: center;
+  background-color: #E6E6FF;
+  border-radius: 16px;
+  padding: 8px 16px;
+}
+
+.search-input {
+  border: none;
+  background-color: #E6E6FF;
+  outline: transparent;
+}
+
+.user-img {
+  background-color: #E6E6FF;
+  height: 80%;
+  width: 80%;
+}

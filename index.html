@@ -3,13 +3,18 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" rel="stylesheet" type="text/css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Social Media</title>
   </head>
   <body>
     <div class="container">
       <div class="navbar">
-        <div class="search-bar"></div>
+        <div class="search-bar">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input type="text" placeholder="Find friends" class="search-input">
+        </div>
+        <img src="images/avatar-image2.jpg" class="profile-picture-small">
       </div>
 
       <div class="profile-section">
@@ -38,7 +43,7 @@
 
           <ul class="friends-list"></ul>
         </div>
-        
+
         <ul class="posts"></ul>
       </div>
     </div>

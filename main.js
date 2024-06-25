@@ -23,6 +23,10 @@ class User {
   renderPosts() {
     postsList.innerHTML = "";
     this.posts.forEach(post => {
+      let likeParagraphText = "";
+      if (post.likes.length === 1) likeParagraphText = `${post.likes[0].firstName} ${post.likes[0].lastName} likes this post`
+      if (post.likes.length === 2) likeParagraphText = `${post.likes[0].firstName} ${post.likes[0].lastName} and ${post.likes[1].firstName} ${post.likes[1].lastName} likes this post`
+      if (post.likes.length >= 3) likeParagraphText = `${post.likes[0].firstName} ${post.likes[0].lastName}, ${post.likes[1].firstName} ${post.likes[1].lastName} and ${post.likes.length - 2} others likes this post`
       const html = `<li>
                       <div class="post">
                         <div class="post-owner-info">
@@ -36,13 +40,28 @@ class User {
                         <p class="post-text">${post.postText}</p>
 
                         <div class="likes-comments-number">
-                          <div class="likes-container"></div>
-                          <div class="comments-container"></div>
+                          <div class="likes-container">
+                            <p>${likeParagraphText}</p>
+                          </div>
+
+                          <div class="comments-container">
+                            <p>${post.comments.length} Comments</p>
+                          </div>
                         </div>
                       </div>
-                      <div class="post-buttons"></div>
-                      <div class="add-comment"></div>
-                      <div class="all-comments"></div>
+
+                      <div class="post-buttons">
+                        <div>Like</div>
+                        <div>Comment</div>
+                      </div>
+
+                      <div class="add-comment">
+                        <input type="text" placeholder="Write a comment" class="write-comment">
+                      </div>
+
+                      <div class="all-comments">
+                        <ul class="comments-list"></ul>
+                      </div>
                     </li>`;
       postsList.insertAdjacentHTML("afterbegin", html);
     })
@@ -67,6 +86,10 @@ class Post {
   addLike(like) {
     this.likes.push(like)
   }
+
+  renderComments() {
+
+  }
 }
 
 class Comment {
@@ -86,10 +109,12 @@ class Like {
 }
 
 
-const newUser = new User(user.name, user.lastName, user.img, user.address, user.friends)
+const newUser = new User(user.firstName, user.lastName, user.img, user.address, user.friends)
 // , user.posts, user.comments, user.likes) za ovaj dio idu metode
 // console.log(user.friends) 
-console.log(newUser)
 user.posts.forEach(post => newUser.posts.push(post))
-console.log(newUser)
 newUser.renderPosts()
+
+postsList.addEventListener("click", (event) => {
+  console.log(event.target)
+})

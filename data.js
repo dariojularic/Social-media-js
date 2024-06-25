@@ -1,6 +1,6 @@
 export const user = {
   id: crypto.randomUUID(),
-  name: "Mario",
+  firstName: "Mario",
   lastName: "Milosevic",
   img: "img/profile5.png",
   address: {
@@ -16,37 +16,37 @@ export const user = {
   friends: [
     {
       id: crypto.randomUUID(),
-      name: "Gordana",
+      firstName: "Gordana",
       lastName: "Stouns",
       img: "/img/friendImages/friend1.jpeg",
     },
     {
       id: crypto.randomUUID(),
-      name: "Hiroshi",
+      firstName: "Hiroshi",
       lastName: "Tanaka",
       img: "/img/friendImages/friend2.jpeg",
     },
     {
       id: crypto.randomUUID(),
-      name: "Kilibarda",
+      firstName: "Kilibarda",
       lastName: "Petrovska",
       img: "/img/friendImages/friend3.jpg",
     },
     {
       id: crypto.randomUUID(),
-      name: "Majda",
+      firstName: "Majda",
       lastName: "Odzaklijevska",
       img: "/img/friendImages/friend4.jpg",
     },
     {
       id: crypto.randomUUID(),
-      name: "Ethan",
+      firstName: "Ethan",
       lastName: "Turner",
       img: "/img/friendImages/friend5.avif",
     },
     {
       id: crypto.randomUUID(),
-      name: "Marc",
+      firstName: "Marc",
       lastName: "Anderson",
       img: "/img/friendImages/friend6.png",
     },
@@ -59,29 +59,29 @@ export const user = {
       postDate: "2 days ago",
       likes: [
         {
-          name: "Gordana",
+          firstName: "Gordana",
           lastName: "Stouns",
         },
         {
-          name: "Hiroshi",
+          firstName: "Hiroshi",
           lastName: "Tanaka",
         },
       ],
       comments: [
         {
-          name: "Gordana",
+          firstName: "Gordana",
           lastName: "Stouns",
           commentText: "Wow, this is so profound and inspiring! Couldn't agree more.",
           img: "/img/friendImages/friend1.jpeg",
         },
         {
-          name: "Marc",
+          firstName: "Marc",
           lastName: "Anderson",
           commentText: "Absolutely love this quote!",
           img: "/img/friendImages/friend6.png",
         },
         {
-          name: "Hiroshi",
+          firstName: "Hiroshi",
           lastName: "Tanaka",
           commentText: "Sometimes, it's the small gestures that make someone a hero",
           img: "/img/friendImages/friend2.jpeg",
@@ -94,7 +94,7 @@ export const user = {
       postDate: "7 days ago",
       likes: [
         {
-          name: "Ethan",
+          firstName: "Ethan",
           lastName: "Turner",
         },
       ],
@@ -105,32 +105,32 @@ export const user = {
       postText: "If I'm to choose between one evil and another, I'd rather not choose at all.",
       postDate: "1 day ago",
       likes: [
-        { name: "Kilibarda", lastName: "Petrovska" },
-        { name: "Hiroshi", lastName: "Tanaka" },
-        { name: "Marc", lastName: "Anderson" },
-        { name: "Maja", lastName: "Odzaklijevska" },
+        { firstName: "Kilibarda", lastName: "Petrovska" },
+        { firstName: "Hiroshi", lastName: "Tanaka" },
+        { firstName: "Marc", lastName: "Anderson" },
+        { firstName: "Maja", lastName: "Odzaklijevska" },
       ],
       comments: [
         {
-          name: "Gordana",
+          firstName: "Gordana",
           lastName: "Stouns",
           commentText: "Sometimes the choices we face are so tough, it's almost like navigating through shades of gray.",
           img: "/img/friendImages/friend1.jpeg",
         },
         {
-          name: "Marc",
+          firstName: "Marc",
           lastName: "Anderson",
           commentText: " Choosing between evils can be a dilemma, but your stance adds a layer of wisdom to it. ",
           img: "/img/friendImages/friend6.png",
         },
         {
-          name: "Ethan",
+          firstName: "Ethan",
           lastName: "Turner",
           commentText: " It's a reminder that sometimes the best option is to stay true to your principles, even if the choices seem challenging.",
           img: "/img/friendImages/friend5.avif",
         },
         {
-          name: "Majda",
+          firstName: "Majda",
           lastName: "Odzaklijevska",
           commentText: "Makes me ponder on the importance of staying true to one's moral compass. ",
           img: "/img/friendImages/friend4.jpg",
