@@ -51,8 +51,8 @@ class User {
                       </div>
 
                       <div class="post-buttons">
-                        <div>Like</div>
-                        <div>Comment</div>
+                        <button class="like-btn">Like</button>
+                        <button class="comment-btn" data-id="${post.id}">Comment</button>
                       </div>
 
                       <div class="add-comment">
@@ -65,6 +65,10 @@ class User {
                     </li>`;
       postsList.insertAdjacentHTML("afterbegin", html);
     })
+  }
+
+  findPost(postId) {
+    return this.posts.find(post => postId === post.id)
   }
 }
 
@@ -88,7 +92,17 @@ class Post {
   }
 
   renderComments() {
-
+    commentsList.innerHTML = "";
+    this.comments.forEach(comment => {
+      const html = `<li>
+                      <img >
+                      <div>
+                        <p class="comment-owner">${comment.firstName} ${comment.lastName}</p>
+                        <p class="comment-text">${comment.commentText}</p>
+                      </div>
+                    </li>`
+    })
+    commentsList.insertAdjacentHTML("afterbegin", html)
   }
 }
 
@@ -116,5 +130,12 @@ user.posts.forEach(post => newUser.posts.push(post))
 newUser.renderPosts()
 
 postsList.addEventListener("click", (event) => {
-  console.log(event.target)
+  console.log(event.target.classList.contains("comment-btn"))
+  if (event.target.classList.contains("comment-btn")) {
+    const commentsList = document.querySelector(".comments-list");
+    console.log(event.target.getAttribute("data-id"))
+    const post = newUser.findPost(event.target.getAttribute("data-id"))
+    console.log("post:", post)
+    post.renderComments()
+  }
 })
