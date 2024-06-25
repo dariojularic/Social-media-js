@@ -1,6 +1,9 @@
 import './style.css'
 import { user } from './data'
 
+const postsList = document.querySelector(".posts");
+const friendsList = document.querySelector(".friends-list");
+
 
 class User {
   constructor(firstName, lastName, img, address, friends) {
@@ -18,18 +21,19 @@ class User {
   }
 
   renderPosts() {
+    postsList.innerHTML = "";
     this.posts.forEach(post => {
       const html = `<li>
                       <div class="post">
                         <div class="post-owner-info">
                           <img >
                           <div>
-                            <p class="post-owner-name"></p>
-                            <p class="post-date"></p>
+                            <p class="post-owner-name">${this.firstName} ${this.lastName}</p>
+                            <p class="post-date">${post.postDate}</p>
                           </div>
                         </div>
 
-                        <p class="post-text"></p>
+                        <p class="post-text">${post.postText}</p>
 
                         <div class="likes-comments-number">
                           <div class="likes-container"></div>
@@ -39,7 +43,8 @@ class User {
                       <div class="post-buttons"></div>
                       <div class="add-comment"></div>
                       <div class="all-comments"></div>
-                    </li>`
+                    </li>`;
+      postsList.insertAdjacentHTML("afterbegin", html);
     })
   }
 }
@@ -87,3 +92,4 @@ const newUser = new User(user.name, user.lastName, user.img, user.address, user.
 console.log(newUser)
 user.posts.forEach(post => newUser.posts.push(post))
 console.log(newUser)
+newUser.renderPosts()
