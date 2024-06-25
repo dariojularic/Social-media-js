@@ -29,8 +29,17 @@
   width: 80%;
 }
 
+.friends-section {
+  display: flex;
+  
+}
+
 .posts {
   width: 320px;
   padding: 0;
   list-style-type: none;
+}
+
+.friends-list {
+  width: 240px;
 }
