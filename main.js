@@ -20,7 +20,22 @@ class User {
   renderPosts() {
     this.posts.forEach(post => {
       const html = `<li>
-                      <div class="post"></div>
+                      <div class="post">
+                        <div class="post-owner-info">
+                          <img >
+                          <div>
+                            <p class="post-owner-name"></p>
+                            <p class="post-date"></p>
+                          </div>
+                        </div>
+
+                        <p class="post-text"></p>
+
+                        <div class="likes-comments-number">
+                          <div class="likes-container"></div>
+                          <div class="comments-container"></div>
+                        </div>
+                      </div>
                       <div class="post-buttons"></div>
                       <div class="add-comment"></div>
                       <div class="all-comments"></div>
