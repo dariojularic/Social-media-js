@@ -30,7 +30,7 @@ class User {
       const html = `<li>
                       <div class="post">
                         <div class="post-owner-info">
-                          <img >
+                          <img src="images/profile1.jpg" class="profile-picture-small">
                           <div>
                             <p class="post-owner-name">${this.firstName} ${this.lastName}</p>
                             <p class="post-date">${post.postDate}</p>
