@@ -125,11 +125,34 @@ p {
 }
 
 .post-btn {
-  width: 45%;
+  width: 49%;
   background-color: white;
   border-top: 1px solid #E6E6FF;
   border-bottom: 1px solid #E6E6FF;
   border-radius: 8px;
   border-left: none;
   border-right: none;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.post-btn:hover {
+  background-color: #E6E6FF;
+  transition: 0.3s;
+}
+
+.add-comment {
+  display: flex;
+  align-items: center;
+}
+
+.write-comment {
+  background-color: #E6E6FF;
+  border: none;
+  border-radius: 16px;
+  padding-left: 8px;
+  margin-left: 8px;
+  height: 24px;
+  width: 100%;
+  
 }
