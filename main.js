@@ -1,6 +1,7 @@
 import './style.css'
 import { user } from './data'
 import { addDays, format } from "date-fns/fp";
+import { formatDistanceToNow } from "date-fns";
 
 
 const postsList = document.querySelector(".posts");
@@ -11,6 +12,9 @@ let postInputValue = "";
 
 postInput.addEventListener("input", () => {
   postInputValue = postInput.value
+  const time = new Date()
+  console.log(formatDistanceToNow(time))
+  // console.log(Date.now)
 })
 
 class User {
@@ -82,13 +86,13 @@ class User {
 }
 
 class Post {
-  constructor(ownersFirstName, ownersLastName, img, date, textContent) {
+  constructor(ownersFirstName, ownersLastName, img, postDate, postText) {
     this.id = crypto.randomUUID()
     this.ownersFirstName = ownersFirstName
     this.ownersLastName = ownersLastName
     this.img = img
-    this.date = date
-    this.textContent = textContent
+    this.postDate = postDate
+    this.postText = postText
     this.likes = []
     this.comments = [] 
   }
@@ -150,6 +154,10 @@ postsList.addEventListener("click", (event) => {
   }
 })
 
-postForm.addEventListener("submit", () => {
-  const newPost = new Post(newUser.firstName, newUser.lastName, newUser.img, )
+postForm.addEventListener("submit", (event) => {
+  event.preventDefault()
+  const newPost = new Post(newUser.firstName, newUser.lastName, newUser.img, new Date(), postInputValue);
+  newUser.addPost(newPost);
+  newUser.renderPosts();
+  console.log(newPost)
 })
