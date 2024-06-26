@@ -31,7 +31,7 @@ class User {
                       <div class="post">
                         <div class="post-owner-info">
                           <img src="images/avatar-image2.jpg" class="profile-picture-small">
-                          <div>
+                          <div class="post-name-date">
                             <p class="post-owner-name">${this.firstName} ${this.lastName}</p>
                             <p class="post-date">${post.postDate}</p>
                           </div>
