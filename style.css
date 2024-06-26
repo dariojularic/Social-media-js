@@ -21,18 +21,21 @@
 }
 
 .search-bar {
-  align-self: center;
+  display: flex;
+  justify-content: center;
   background-color: #E6E6FF;
   border-radius: 16px;
-  padding: 8px 16px;
-  height: 24px;
+  padding: 4px 16px;
+  height: 16px;
 }
 
 .search-input {
   border: none;
   background-color: #E6E6FF;
   outline: transparent;
-  height: 24px;
+  height: 16px;
+  margin-left: 8px;
+  font-size: 16px;
 }
 
 .user-img {
@@ -78,12 +81,11 @@
 
 .user {
   height: 320px;
-  width: 480px;
-  border: 2px solid blue;
+  width: 80%;
 }
 
 .user-background-picture {
-  height: 80%;
+  height: 100%;
   background-color: #E6E6FF;
 }
 
@@ -105,16 +107,16 @@
 }
 
 p {
-  font-size: 14px;
+  font-size: 24px;
   margin: 0px;
 }
 
 .likes-paragraph {
-  font-size: 10px;
+  font-size: 16px;
 }
 
 .comments-paragraph {
-  font-size: 10px;
+  font-size: 16px;
 }
 
 .likes-comments-number {
@@ -138,6 +140,7 @@ p {
   border-right: none;
   cursor: pointer;
   transition: 0.3s;
+  font-size: 16px;
 }
 
 .post-btn:hover {
@@ -156,18 +159,18 @@ p {
   border-radius: 16px;
   padding-left: 8px;
   margin-left: 8px;
-  height: 24px;
+  height: 32px;
   width: 100%;
-
+  font-size: 16px;
 }
 
 .post-date {
-  font-size: 10px;
+  font-size: 12px;
   color: gray;
 }
 
 .post-text {
-  margin: 8px 0px;
+  margin: 24px 0px;
 }
 
 .post-name-date {

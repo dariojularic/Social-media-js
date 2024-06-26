@@ -1,9 +1,17 @@
 import './style.css'
 import { user } from './data'
+import { addDays, format } from "date-fns/fp";
+
 
 const postsList = document.querySelector(".posts");
 const friendsList = document.querySelector(".friends-list");
+const postForm = document.querySelector(".post-form");
+const postInput = document.querySelector(".post-input");
+let postInputValue = "";
 
+postInput.addEventListener("input", () => {
+  postInputValue = postInput.value
+})
 
 class User {
   constructor(firstName, lastName, img, address, friends) {
@@ -74,9 +82,10 @@ class User {
 }
 
 class Post {
-  constructor(owner, img, date, textContent) {
+  constructor(ownersFirstName, ownersLastName, img, date, textContent) {
     this.id = crypto.randomUUID()
-    this.owner = owner
+    this.ownersFirstName = ownersFirstName
+    this.ownersLastName = ownersLastName
     this.img = img
     this.date = date
     this.textContent = textContent
@@ -139,4 +148,8 @@ postsList.addEventListener("click", (event) => {
     console.log("post:", post)
     post.renderComments()
   }
+})
+
+postForm.addEventListener("submit", () => {
+  const newPost = new Post(newUser.firstName, newUser.lastName, newUser.img, )
 })
