@@ -1,6 +1,7 @@
 .navbar {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   border-bottom: 1px solid #E6E6FF;
 }
 
@@ -24,12 +25,14 @@
   background-color: #E6E6FF;
   border-radius: 16px;
   padding: 8px 16px;
+  height: 24px;
 }
 
 .search-input {
   border: none;
   background-color: #E6E6FF;
   outline: transparent;
+  height: 24px;
 }
 
 .user-img {
@@ -52,7 +55,7 @@
 }
 
 .friends {
-  background-color: white;
+  background-color: whitesmoke;
   width: 45%;
   height: 240px;
   border-radius: 8px;
@@ -94,7 +97,7 @@
 }
 
 .post-item {
-  background-color: white;
+  background-color: whitesmoke;
   border-radius: 8px;
   padding: 8px;
   margin: 16px 0px;
@@ -126,7 +129,7 @@ p {
 
 .post-btn {
   width: 49%;
-  background-color: white;
+  background-color: whitesmoke;
   border-top: 1px solid #E6E6FF;
   border-bottom: 1px solid #E6E6FF;
   border-radius: 8px;
@@ -154,5 +157,10 @@ p {
   margin-left: 8px;
   height: 24px;
   width: 100%;
-  
+
+}
+
+.post-date {
+  font-size: 10px;
+  color: gray;
 }
