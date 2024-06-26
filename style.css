@@ -42,19 +42,25 @@
   display: flex;
   justify-content: space-evenly;
   background-color: #E6E6FF;
-
+  padding: 16px 0px;
 }
 
 .posts {
-  width: 320px;
+  width: 45%;
   padding: 0;
   list-style-type: none;
 }
 
-.friends-list {
-  width: 240px;
-  height: 240px;
+.friends {
   background-color: white;
+  width: 45%;
+  height: 240px;
+  border-radius: 8px;
+}
+
+.friends-list {
+  padding: 0px;
+  width: 100%;
 }
 
 .post-owner-info {
@@ -79,4 +85,35 @@
 
 .user-info {
   height: 20%;
+}
+
+.new-post {
+  margin: 16px 0px;
+  display: flex;
+  justify-content: center;
+}
+
+.post-item {
+  background-color: white;
+  border-radius: 8px;
+  padding: 8px;
+  margin: 16px 0px;
+}
+
+p {
+  font-size: 14px;
+  margin: 0px;
+}
+
+.likes-paragraph {
+  font-size: 10px;
+}
+
+.comments-paragraph {
+  font-size: 10px;
+}
+
+.likes-comments-number {
+  display: flex;
+  justify-content: space-between;
 }

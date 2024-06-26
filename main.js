@@ -27,7 +27,7 @@ class User {
       if (post.likes.length === 1) likeParagraphText = `${post.likes[0].firstName} ${post.likes[0].lastName} likes this post`
       if (post.likes.length === 2) likeParagraphText = `${post.likes[0].firstName} ${post.likes[0].lastName} and ${post.likes[1].firstName} ${post.likes[1].lastName} likes this post`
       if (post.likes.length >= 3) likeParagraphText = `${post.likes[0].firstName} ${post.likes[0].lastName}, ${post.likes[1].firstName} ${post.likes[1].lastName} and ${post.likes.length - 2} others likes this post`
-      const html = `<li>
+      const html = `<li class="post-item">
                       <div class="post">
                         <div class="post-owner-info">
                           <img src="images/avatar-image2.jpg" class="profile-picture-small">
@@ -41,11 +41,11 @@ class User {
 
                         <div class="likes-comments-number">
                           <div class="likes-container">
-                            <p>${likeParagraphText}</p>
+                            <p class="likes-paragraph">${likeParagraphText}</p>
                           </div>
 
                           <div class="comments-container">
-                            <p>${post.comments.length} Comments</p>
+                            <p class="comments-paragraph">${post.comments.length} Comments</p>
                           </div>
                         </div>
                       </div>
