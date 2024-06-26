@@ -117,3 +117,19 @@ p {
   display: flex;
   justify-content: space-between;
 }
+
+.post-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin: 8px 0px;
+}
+
+.post-btn {
+  width: 45%;
+  background-color: white;
+  border-top: 1px solid #E6E6FF;
+  border-bottom: 1px solid #E6E6FF;
+  border-radius: 8px;
+  border-left: none;
+  border-right: none;
+}

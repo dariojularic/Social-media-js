@@ -51,8 +51,8 @@ class User {
                       </div>
 
                       <div class="post-buttons">
-                        <button class="like-btn">Like</button>
-                        <button class="comment-btn" data-id="${post.id}">Comment</button>
+                        <button class="like-btn post-btn"><i class="fa-regular fa-thumbs-up"></i>Like</button>
+                        <button class="comment-btn post-btn" data-id="${post.id}"><i class="fa-regular fa-comments"></i>Comment</button>
                       </div>
 
                       <div class="add-comment">
