@@ -10,6 +10,15 @@
   width: 40px;
 }
 
+.profile-picture-large {
+  border-radius: 50%;
+  height: 80px;
+  width: 80px;
+  position: absolute;
+  bottom: 100px;
+  left: 40px;
+}
+
 .search-bar {
   align-self: center;
   background-color: #E6E6FF;
@@ -31,6 +40,8 @@
 
 .friends-section {
   display: flex;
+  justify-content: space-evenly;
+  background-color: #E6E6FF;
 
 }
 
@@ -42,8 +53,30 @@
 
 .friends-list {
   width: 240px;
+  height: 240px;
+  background-color: white;
 }
 
 .post-owner-info {
   display: flex;
+}
+
+.profile-section {
+  display: flex;
+  justify-content: center;
+}
+
+.user {
+  height: 320px;
+  width: 480px;
+  border: 2px solid blue;
+}
+
+.user-background-picture {
+  height: 80%;
+  background-color: #E6E6FF;
+}
+
+.user-info {
+  height: 20%;
 }
