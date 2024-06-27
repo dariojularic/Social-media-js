@@ -56,7 +56,7 @@ export const user = {
     {
       id: crypto.randomUUID(),
       postText: "A true hero isn't measured by the size of his strength but by the strength of his heart",
-      postDate: "2 days ago",
+      postDate: new Date(2024, 1, 25, 10, 30),
       likes: [
         {
           firstName: "Gordana",
@@ -91,7 +91,7 @@ export const user = {
     {
       id: crypto.randomUUID(),
       postText: "It's not who I am underneath, but what I do that defines me.",
-      postDate: "7 days ago",
+      postDate: new Date(2024, 4, 12, 10, 30),
       likes: [
         {
           firstName: "Ethan",
@@ -103,7 +103,7 @@ export const user = {
     {
       id: crypto.randomUUID(),
       postText: "If I'm to choose between one evil and another, I'd rather not choose at all.",
-      postDate: "1 day ago",
+      postDate: new Date(2024, 5, 22, 10, 30),
       likes: [
         { firstName: "Kilibarda", lastName: "Petrovska" },
         { firstName: "Hiroshi", lastName: "Tanaka" },

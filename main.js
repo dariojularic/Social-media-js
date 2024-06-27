@@ -45,7 +45,7 @@ class User {
                           <img src="images/avatar-image2.jpg" class="profile-picture-small">
                           <div class="post-name-date">
                             <p class="post-owner-name">${this.firstName} ${this.lastName}</p>
-                            <p class="post-date">${post.postDate}</p>
+                            <p class="post-date">${formatDistanceToNow(post.postDate)}</p>
                           </div>
                         </div>
 
@@ -159,5 +159,5 @@ postForm.addEventListener("submit", (event) => {
   const newPost = new Post(newUser.firstName, newUser.lastName, newUser.img, new Date(), postInputValue);
   newUser.addPost(newPost);
   newUser.renderPosts();
-  console.log(newPost)
+  postInput.value = "";
 })
