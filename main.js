@@ -14,8 +14,6 @@ let postInputValue = "";
 postInput.addEventListener("input", () => {
   postInputValue = postInput.value
   const time = new Date()
-  console.log(formatDistanceToNow(time))
-  // console.log(Date.now)
 })
 
 class User {
