@@ -8,6 +8,7 @@ const postsList = document.querySelector(".posts");
 const friendsList = document.querySelector(".friends-list");
 const postForm = document.querySelector(".post-form");
 const postInput = document.querySelector(".post-input");
+const commentInput = document.querySelector(".write-comment")
 let postInputValue = "";
 
 postInput.addEventListener("input", () => {
@@ -57,7 +58,7 @@ class User {
                           </div>
 
                           <div class="comments-container">
-                            <p class="comments-paragraph">${post.comments.length} Comments</p>
+                            <p class="comments-paragraph" data-id="${post.id}">${post.comments.length} Comments</p>
                           </div>
                         </div>
                       </div>
@@ -73,7 +74,7 @@ class User {
                       </div>
 
                       <div class="all-comments">
-                        <ul class="comments-list"></ul>
+                        <ul class="comments-list" id=${post.id}></ul>
                       </div>
                     </li>`;
       postsList.insertAdjacentHTML("afterbegin", html);
@@ -136,26 +137,43 @@ class Like {
   }
 }
 
+// za svaki post iz data.js napravit new Post
+// obratit paznju da ne gurnem u comments ili likes array nista jer podaci sadrze
 
 const newUser = new User(user.firstName, user.lastName, user.img, user.address, user.friends)
 // , user.posts, user.comments, user.likes) za ovaj dio idu metode
 // console.log(user.friends) 
 user.posts.forEach(post => newUser.posts.push(post))
 newUser.renderPosts()
+const commentsList = document.querySelector(".comments-list")
 
 postsList.addEventListener("click", (event) => {
-  console.log(event.target.classList.contains("comment-btn"))
-  if (event.target.classList.contains("comment-btn")) {
-    const commentsList = document.querySelector(".comments-list");
-    console.log(event.target.getAttribute("data-id"))
-    const post = newUser.findPost(event.target.getAttribute("data-id"))
-    console.log("post:", post)
-    post.renderComments()
-  }
+  // console.log(event.target.classList.contains("comment-btn"))
+  // if (event.target.classList.contains("comment-btn")) {
+
+  //   const commentsList = document.querySelector(".comments-list");
+  //   console.log(event.target.getAttribute("data-id"))
+  //   const post = newUser.findPost(event.target.getAttribute("data-id"))
+  //   console.log("post:", post)
+  //   post.renderComments()
+  // }
+    if (event.target.classList.contains("comments-paragraph")) {
+
+      const postParent = event.target.closest("li")
+      const currentCommentsList = postParent.querySelector(".comments-list");
+      console.log(currentCommentsList)
+      const currentPost = newUser.findPost(event.target.getAttribute("data-id"))
+      console.log(currentPost)
+
+      currentPost.comments.forEach(comment => {
+        const html =  `<li>blablaa</li>`
+        currentCommentsList.insertAdjacentHTML("afterbegin", html)
+      })
+    }
 })
 
 postForm.addEventListener("submit", (event) => {
-  event.preventDefault()
+  event.preventDefault();
   const newPost = new Post(newUser.firstName, newUser.lastName, newUser.img, new Date(), postInputValue);
   newUser.addPost(newPost);
   newUser.renderPosts();
