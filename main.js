@@ -163,13 +163,9 @@ postsList.addEventListener("click", (event) => {
   //   post.renderComments()
   // }
     if (event.target.classList.contains("comments-paragraph")) {
-
       const postParent = event.target.closest("li")
       const currentCommentsList = postParent.querySelector(".comments-list");
-      console.log(currentCommentsList)
       const currentPost = newUser.findPost(event.target.getAttribute("data-id"))
-      console.log(currentPost)
-
       currentPost.comments.forEach(comment => {
         const html =  `<li>blablaa</li>`
         currentCommentsList.insertAdjacentHTML("afterbegin", html)
