@@ -142,8 +142,13 @@ class Like {
 
 const newUser = new User(user.firstName, user.lastName, user.img, user.address, user.friends)
 // , user.posts, user.comments, user.likes) za ovaj dio idu metode
-// console.log(user.friends) 
-user.posts.forEach(post => newUser.posts.push(post))
+// console.log(user.friends)
+user.posts.forEach(post => newUser.posts.push(post)) 
+// user.posts.forEach(post => {
+//   const newPost = new Post(post.firstName, post.lastName, post.img, post.postDate, post.postText)
+//   // newPost.comments.push(new Comment())
+
+// })
 newUser.renderPosts()
 const commentsList = document.querySelector(".comments-list")
 
