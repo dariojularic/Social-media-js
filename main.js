@@ -120,9 +120,10 @@ class Post {
 }
 
 class Comment {
-  constructor(owner, textContent, img) {
+  constructor(ownersFirstName, ownersLastName, textContent, img) {
     this.id = crypto.randomUUID()
-    this.owner = owner
+    this.ownersFirstName = ownersFirstName
+    this.ownersLastName = ownersLastName
     this.textContent = textContent
     this.img = img
   }
@@ -139,12 +140,19 @@ class Like {
 // obratit paznju da ne gurnem u comments ili likes array nista jer podaci sadrze
 
 const newUser = new User(user.firstName, user.lastName, user.img, user.address, user.friends)
-user.posts.forEach(post => newUser.posts.push(post)) 
-// user.posts.forEach(post => {
-//   const newPost = new Post(post.firstName, post.lastName, post.img, post.postDate, post.postText)
-//   // newPost.comments.push(new Comment())
+user.posts.forEach(post => {
+  const newPost = new Post(post.firstName, post.lastName, post.img, post.postDate, post.postText)
+  post.comments.forEach(comment => {
+    const newComment = new Comment(comment.firstName, comment.lastName, comment.commentText, comment.img);
+    newPost.addComment(newComment)
+  })
+  post.likes.forEach(like => {
+    const newLike = new Like(like.firstName, like.lastName)
+    newPost.addLike(newLike)
+  })
+  newUser.addPost(newPost)
+})
 
-// })
 newUser.renderPosts()
 const commentsList = document.querySelector(".comments-list")
 
