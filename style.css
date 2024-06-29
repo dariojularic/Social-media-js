@@ -60,9 +60,10 @@
 
 .friends {
   background-color: whitesmoke;
-  width: 45%;
-  height: 240px;
+  width: fit-content;
+  height: fit-content;
   border-radius: 8px;
+  padding: 8px;
 }
 
 .friends-list {
@@ -192,6 +193,11 @@ p {
 
 .friend-name {
   font-size: 16px;
+}
+
+.friend {
+  justify-self: center;
+  align-self: center;
 }
 
 

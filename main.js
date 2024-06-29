@@ -84,9 +84,9 @@ class User {
   }
 
   renderFriends() {
-    for (let i = 0; i < 7; i++) {
+    for (let i = 0; i < 6; i++) {
       const element = this.friends[i];
-      const html = `<li>
+      const html = `<li class="friend">
                       <img src="${element.img}" class="friend-image friend${i}">
                       <p class="friend-name">${element.firstName} ${element.lastName}</p>
                     </li>`
@@ -184,7 +184,14 @@ postsList.addEventListener("click", (event) => {
       const currentCommentsList = postParent.querySelector(".comments-list");
       const currentPost = newUser.findPost(event.target.getAttribute("data-id"))
       currentPost.comments.forEach(comment => {
-        const html =  `<li>blablaa</li>`
+        console.log(comment)
+        const html = `<li class="comment-item">
+                        <img src="${comment.img}" class="profile-picture-small"> 
+                        <div>
+                          <p class="comment-owner"></p>
+                          <p class="comment-text">${comment.textContent}</p>
+                        </div>
+                      </li>`
         currentCommentsList.insertAdjacentHTML("afterbegin", html)
       })
     }
