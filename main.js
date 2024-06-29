@@ -8,13 +8,10 @@ const postsList = document.querySelector(".posts");
 const friendsList = document.querySelector(".friends-list");
 const postForm = document.querySelector(".post-form");
 const postInput = document.querySelector(".post-input");
-const commentInput = document.querySelector(".write-comment")
 let postInputValue = "";
 let commentInputValue = "";
 
-commentInput.addEventListener("input", () => {
-  commentInputValue = commentInput.value
-})
+
 
 postInput.addEventListener("input", () => {
   postInputValue = postInput.value
@@ -173,6 +170,9 @@ user.posts.forEach(post => {
 
 newUser.renderPosts()
 const commentsList = document.querySelector(".comments-list")
+const commentInput = document.querySelector(".write-comment")
+
+commentInput.addEventListener("input", () => commentInputValue = commentInput.value)
 
 postsList.addEventListener("click", (event) => {
   // console.log(event.target.classList.contains("comment-btn"))
@@ -210,3 +210,7 @@ postForm.addEventListener("submit", (event) => {
   postInput.value = "";
 })
 
+commentInput.addEventListener("submit", (event) => {
+  // event.preventDefault()
+  console.log(event.target.closest("ul"))
+})
