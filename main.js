@@ -82,6 +82,17 @@ class User {
   findPost(postId) {
     return this.posts.find(post => postId === post.id)
   }
+
+  renderFriends() {
+    for (let i = 0; i < 7; i++) {
+      const element = this.friends[i];
+      const html = `<li>
+                      <img src="${element.img}" class="friend-image friend${i}">
+                      <p class="friend-name">${element.firstName} ${element.lastName}</p>
+                    </li>`
+      friendsList.insertAdjacentHTML("afterbegin", html);
+    }
+  }
 }
 
 class Post {
@@ -140,6 +151,8 @@ class Like {
 // obratit paznju da ne gurnem u comments ili likes array nista jer podaci sadrze
 
 const newUser = new User(user.firstName, user.lastName, user.img, user.address, user.friends)
+newUser.renderFriends();
+
 user.posts.forEach(post => {
   const newPost = new Post(post.firstName, post.lastName, post.img, post.postDate, post.postText)
   post.comments.forEach(comment => {
@@ -184,3 +197,4 @@ postForm.addEventListener("submit", (event) => {
   newUser.renderPosts();
   postInput.value = "";
 })
+
