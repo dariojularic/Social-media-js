@@ -10,6 +10,11 @@ const postForm = document.querySelector(".post-form");
 const postInput = document.querySelector(".post-input");
 const commentInput = document.querySelector(".write-comment")
 let postInputValue = "";
+let commentInputValue = "";
+
+commentInput.addEventListener("input", () => {
+  commentInputValue = commentInput.value
+})
 
 postInput.addEventListener("input", () => {
   postInputValue = postInput.value
