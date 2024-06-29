@@ -206,15 +206,29 @@ p {
 
 .comment-item {
   display: flex;
-
+  margin-top: 16px;
 }
 
 .comment-text {
-  font-size: 18px;
+  font-size: 16px;
   background-color: #E6E6FF;
   border-radius: 16px;
   padding: 8px 12px;
   width: 100%;
+}
+
+.comment-owner {
+  font-size: 20px;
+  margin-bottom: 8px;
+  /* font-weight: 500; */
+}
+
+.comment-info {
+  padding-left: 16px;
+}
+
+.comment-img {
+  align-self: center;
 }
 
 

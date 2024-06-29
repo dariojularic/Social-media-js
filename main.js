@@ -186,8 +186,8 @@ postsList.addEventListener("click", (event) => {
       currentPost.comments.forEach(comment => {
         console.log(comment)
         const html = `<li class="comment-item">
-                        <img src="${comment.img}" class="profile-picture-small"> 
-                        <div>
+                        <img src="${comment.img}" class="profile-picture-small comment-img"> 
+                        <div class="comment-info">
                           <p class="comment-owner">${comment.ownersFirstName} ${comment.ownersLastName}</p>
                           <p class="comment-text">${comment.textContent}</p>
                         </div>
