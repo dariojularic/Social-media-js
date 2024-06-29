@@ -200,6 +200,24 @@ p {
   align-self: center;
 }
 
+.comments-list {
+  list-style: none;
+}
+
+.comment-item {
+  display: flex;
+
+}
+
+.comment-text {
+  font-size: 18px;
+  background-color: #E6E6FF;
+  border-radius: 16px;
+  padding: 8px 12px;
+  width: 100%;
+}
+
+
 
 
 

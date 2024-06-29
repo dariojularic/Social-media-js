@@ -188,7 +188,7 @@ postsList.addEventListener("click", (event) => {
         const html = `<li class="comment-item">
                         <img src="${comment.img}" class="profile-picture-small"> 
                         <div>
-                          <p class="comment-owner"></p>
+                          <p class="comment-owner">${comment.ownersFirstName} ${comment.ownersLastName}</p>
                           <p class="comment-text">${comment.textContent}</p>
                         </div>
                       </li>`
