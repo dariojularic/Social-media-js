@@ -73,6 +73,7 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(2, 1fr);
+  gap: 8px;
 }
 
 .post-owner-info {
@@ -186,9 +187,11 @@ p {
 }
 
 .friend-image {
-  height: 80px;
-  width: 80px;
+  height: 100px;
+  width: 123px;
   border-radius: 16px;
+  align-self: center;
+  justify-self: center;
 }
 
 .friend-name {
