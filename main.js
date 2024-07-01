@@ -70,7 +70,9 @@ class User {
 
                       <div class="add-comment">
                         <img src="images/avatar-image2.jpg" class="profile-picture-small">
-                        <input type="text" placeholder="Write a comment" class="write-comment">
+                        <form class="comment-form">
+                          <input type="text" placeholder="Write a comment" class="write-comment">
+                        </form>    
                       </div>
 
                       <div class="all-comments">
@@ -189,7 +191,7 @@ postsList.addEventListener("click", (event) => {
       const currentCommentsList = postParent.querySelector(".comments-list");
       const currentPost = newUser.findPost(event.target.getAttribute("data-id"))
       currentPost.comments.forEach(comment => {
-        console.log(comment)
+        // console.log(comment)
         const html = `<li class="comment-item">
                         <img src="${comment.img}" class="profile-picture-small comment-img"> 
                         <div class="comment-info">
@@ -213,4 +215,9 @@ postForm.addEventListener("submit", (event) => {
 commentInput.addEventListener("submit", (event) => {
   // event.preventDefault()
   console.log(event.target.closest("ul"))
+})
+
+postsList.addEventListener("click", (event) => {
+  console.log(event.target.closest("ul"))
+  console.log(event.target.querySelector("ul"))
 })
