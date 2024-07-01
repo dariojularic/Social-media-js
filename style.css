@@ -123,6 +123,7 @@ p {
 
 .comments-paragraph {
   font-size: 16px;
+  cursor: pointer;
 }
 
 .likes-comments-number {

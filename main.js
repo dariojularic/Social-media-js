@@ -40,7 +40,7 @@ class User {
       if (post.likes.length === 1) likeParagraphText = `${post.likes[0].firstName} ${post.likes[0].lastName} likes this post`
       if (post.likes.length === 2) likeParagraphText = `${post.likes[0].firstName} ${post.likes[0].lastName} and ${post.likes[1].firstName} ${post.likes[1].lastName} likes this post`
       if (post.likes.length >= 3) likeParagraphText = `${post.likes[0].firstName} ${post.likes[0].lastName}, ${post.likes[1].firstName} ${post.likes[1].lastName} and ${post.likes.length - 2} others likes this post`
-      const html = `<li class="post-item">
+      const html = `<li class="post-item" data-id="${post.id}">
                       <div class="post">
                         <div class="post-owner-info">
                           <img src="images/avatar-image2.jpg" class="profile-picture-small">
@@ -218,6 +218,6 @@ commentInput.addEventListener("submit", (event) => {
 })
 
 postsList.addEventListener("click", (event) => {
-  console.log(event.target.closest("ul"))
-  console.log(event.target.querySelector("ul"))
+  console.log(event.target.closest("li"))
+  // console.log(event.target.querySelector("ul"))
 })
