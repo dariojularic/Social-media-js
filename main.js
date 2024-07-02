@@ -72,6 +72,7 @@ class User {
                         <img src="images/avatar-image2.jpg" class="profile-picture-small">
                         <form class="comment-form">
                           <input type="text" placeholder="Write a comment" class="write-comment">
+                          <button class="add-comment-btn">Add comment</button>
                         </form>    
                       </div>
 

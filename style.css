@@ -235,7 +235,18 @@ p {
   align-self: center;
 }
 
+.comment-form {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
 
+.add-comment-btn {
+  border-radius: 8px;
+  background-color: rgb(20, 67, 253);
+  color: white;
+  margin: 0 8px;
+}
 
 
 
