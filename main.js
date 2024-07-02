@@ -85,7 +85,9 @@ class User {
       document.querySelector(`.comment-form-${post.id}`).addEventListener("submit", (event) => {
         event.preventDefault()
         const newComment = event.target.querySelector(".write-comment").value
+        // const newComment = new Comment()
         // console.log(event.target.querySelector(".write-comment").value)
+        console.log(newComment)
         post.addComment(newComment)
         document.createElement("li")
       })
@@ -196,23 +198,24 @@ postsList.addEventListener("click", (event) => {
 
 // na prvo prikazivanje komentara dodaj class is active, a prije samog dodavanja komentara provjerit jel ima klasu is activ. ako ima klasu is activ, samo makni is activ klasu sakrij koment i return
 
-    if (event.target.classList.contains("comments-paragraph")) {
-      const postParent = event.target.closest("li")
-      const currentCommentsList = postParent.querySelector(".comments-list");
-      currentCommentsList.innerHTML = ""
-      const currentPost = newUser.findPost(event.target.getAttribute("data-id"))
-      // currentPost.renderComments()
-      currentPost.comments.forEach(comment => {
-        const html = `<li class="comment-item">
-                        <img src="${comment.img}" class="profile-picture-small comment-img"> 
-                        <div class="comment-info">
-                          <p class="comment-owner">${comment.ownersFirstName} ${comment.ownersLastName}</p>
-                          <p class="comment-text">${comment.textContent}</p>
-                        </div>
-                      </li>`
-        currentCommentsList.insertAdjacentHTML("afterbegin", html)
-      })
-    }
+  if (event.target.classList.contains("comments-paragraph") && !event.target.classList.contains("is-active")) {
+    event.target.classList.add("is-active")
+    const postParent = event.target.closest("li")
+    const currentCommentsList = postParent.querySelector(".comments-list");
+    currentCommentsList.innerHTML = ""
+    const currentPost = newUser.findPost(event.target.getAttribute("data-id"))
+    // currentPost.renderComments()
+    currentPost.comments.forEach(comment => {
+      const html = `<li class="comment-item">
+                      <img src="${comment.img}" class="profile-picture-small comment-img"> 
+                      <div class="comment-info">
+                        <p class="comment-owner">${comment.ownersFirstName} ${comment.ownersLastName}</p>
+                        <p class="comment-text">${comment.textContent}</p>
+                      </div>
+                    </li>`
+      currentCommentsList.insertAdjacentHTML("afterbegin", html)
+    })
+  }
 })
 
 postForm.addEventListener("submit", (event) => {
