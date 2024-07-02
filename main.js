@@ -80,10 +80,14 @@ class User {
                         <ul class="comments-list" id=${post.id}></ul>
                       </div>
                     </li>`;
+
       postsList.insertAdjacentHTML("afterbegin", html);
       document.querySelector(`.comment-form-${post.id}`).addEventListener("submit", (event) => {
         event.preventDefault()
-        console.log("blabal")
+        const newComment = event.target.querySelector(".write-comment").value
+        // console.log(event.target.querySelector(".write-comment").value)
+        post.addComment(newComment)
+        document.createElement("li")
       })
     })
   }
@@ -125,11 +129,11 @@ class Post {
   }
 
   renderComments() {
-    commentsList.innerHTML = "";
+    // commentsList.innerHTML = "";
     this.comments.forEach(comment => {
-      const html = `<li>
-                      <img >
-                      <div>
+      const html = `<li class="comment-item">
+                      <img src="${comment.img}" class="profile-picture-small comment-img">
+                      <div class="comment-info">
                         <p class="comment-owner">${comment.firstName} ${comment.lastName}</p>
                         <p class="comment-text">${comment.commentText}</p>
                       </div>
@@ -156,9 +160,6 @@ class Like {
   }
 }
 
-// za svaki post iz data.js napravit new Post
-// obratit paznju da ne gurnem u comments ili likes array nista jer podaci sadrze
-
 const newUser = new User(user.firstName, user.lastName, user.img, user.address, user.friends)
 newUser.renderFriends();
 
@@ -177,9 +178,9 @@ user.posts.forEach(post => {
 
 newUser.renderPosts()
 const commentsList = document.querySelector(".comments-list")
-const commentInput = document.querySelector(".write-comment")
+// const commentInput = document.querySelector(".write-comment")
 
-commentInput.addEventListener("input", () => commentInputValue = commentInput.value)
+// commentInput.addEventListener("input", () => commentInputValue = commentInput.value)
 
 postsList.addEventListener("click", (event) => {
   // console.log(event.target.classList.contains("comment-btn"))
@@ -191,6 +192,8 @@ postsList.addEventListener("click", (event) => {
   //   console.log("post:", post)
   //   post.renderComments()
   // }
+
+
 // na prvo prikazivanje komentara dodaj class is active, a prije samog dodavanja komentara provjerit jel ima klasu is activ. ako ima klasu is activ, samo makni is activ klasu sakrij koment i return
 
     if (event.target.classList.contains("comments-paragraph")) {
@@ -198,8 +201,8 @@ postsList.addEventListener("click", (event) => {
       const currentCommentsList = postParent.querySelector(".comments-list");
       currentCommentsList.innerHTML = ""
       const currentPost = newUser.findPost(event.target.getAttribute("data-id"))
+      // currentPost.renderComments()
       currentPost.comments.forEach(comment => {
-        // console.log(comment)
         const html = `<li class="comment-item">
                         <img src="${comment.img}" class="profile-picture-small comment-img"> 
                         <div class="comment-info">
@@ -220,12 +223,7 @@ postForm.addEventListener("submit", (event) => {
   postInput.value = "";
 })
 
-commentInput.addEventListener("submit", (event) => {
-  // event.preventDefault()
-  console.log(event.target.closest("ul"))
-})
-
 postsList.addEventListener("click", (event) => {
-  console.log(event.target.closest("li"))
+  // console.log(event.target.closest("li"))
   // console.log(event.target.querySelector("ul"))
 })
