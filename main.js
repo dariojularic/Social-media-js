@@ -70,7 +70,7 @@ class User {
 
                       <div class="add-comment">
                         <img src="images/avatar-image2.jpg" class="profile-picture-small">
-                        <form class="comment-form">
+                        <form class="comment-form-${post.id}">
                           <input type="text" placeholder="Write a comment" class="write-comment">
                           <button class="add-comment-btn">Add comment</button>
                         </form>    
@@ -81,6 +81,10 @@ class User {
                       </div>
                     </li>`;
       postsList.insertAdjacentHTML("afterbegin", html);
+      document.querySelector(`.comment-form-${post.id}`).addEventListener("submit", (event) => {
+        event.preventDefault()
+        console.log("blabal")
+      })
     })
   }
 
@@ -187,9 +191,12 @@ postsList.addEventListener("click", (event) => {
   //   console.log("post:", post)
   //   post.renderComments()
   // }
+// na prvo prikazivanje komentara dodaj class is active, a prije samog dodavanja komentara provjerit jel ima klasu is activ. ako ima klasu is activ, samo makni is activ klasu sakrij koment i return
+
     if (event.target.classList.contains("comments-paragraph")) {
       const postParent = event.target.closest("li")
       const currentCommentsList = postParent.querySelector(".comments-list");
+      currentCommentsList.innerHTML = ""
       const currentPost = newUser.findPost(event.target.getAttribute("data-id"))
       currentPost.comments.forEach(comment => {
         // console.log(comment)
