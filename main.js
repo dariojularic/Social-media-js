@@ -225,8 +225,3 @@ postForm.addEventListener("submit", (event) => {
   newUser.renderPosts();
   postInput.value = "";
 })
-
-postsList.addEventListener("click", (event) => {
-  // console.log(event.target.closest("li"))
-  // console.log(event.target.querySelector("ul"))
-})
