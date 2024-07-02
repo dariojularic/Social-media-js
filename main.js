@@ -185,17 +185,6 @@ const commentsList = document.querySelector(".comments-list")
 // commentInput.addEventListener("input", () => commentInputValue = commentInput.value)
 
 postsList.addEventListener("click", (event) => {
-  // console.log(event.target.classList.contains("comment-btn"))
-  // if (event.target.classList.contains("comment-btn")) {
-
-  //   const commentsList = document.querySelector(".comments-list");
-  //   console.log(event.target.getAttribute("data-id"))
-  //   const post = newUser.findPost(event.target.getAttribute("data-id"))
-  //   console.log("post:", post)
-  //   post.renderComments()
-  // }
-
-
 // na prvo prikazivanje komentara dodaj class is active, a prije samog dodavanja komentara provjerit jel ima klasu is activ. ako ima klasu is activ, samo makni is activ klasu sakrij koment i return
 
   if (event.target.classList.contains("comments-paragraph") && !event.target.classList.contains("is-active")) {
