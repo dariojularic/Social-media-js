@@ -168,9 +168,14 @@ function displayUsername(firstName, lastName) {
   username.textContent = firstName + " " + lastName
 }
 
+function displayAddress(city) {
+  address.textContent = city
+}
+
 const newUser = new User(user.firstName, user.lastName, user.img, user.address, user.friends)
 newUser.renderFriends();
 displayUsername(newUser.firstName, newUser.lastName)
+displayAddress(newUser.address.city)
 
 user.posts.forEach(post => {
   const newPost = new Post(post.firstName, post.lastName, post.img, post.postDate, post.postText)
