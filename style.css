@@ -5,6 +5,11 @@
   border-bottom: 1px solid #E6E6FF;
 }
 
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
 .profile-picture-small {
   border-radius: 50%;
   height: 40px;
@@ -81,13 +86,12 @@
 }
 
 .profile-section {
-  display: flex;
-  justify-content: center;
+  align-self: center;
+  height: 320px;
+  width: 80%;
 }
 
 .user {
-  height: 320px;
-  width: 80%;
 }
 
 .user-background-picture {
