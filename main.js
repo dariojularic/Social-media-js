@@ -8,6 +8,8 @@ const postsList = document.querySelector(".posts");
 const friendsList = document.querySelector(".friends-list");
 const postForm = document.querySelector(".post-form");
 const postInput = document.querySelector(".post-input");
+const username = document.querySelector(".user-name");
+const address = document.querySelector(".address");
 let postInputValue = "";
 let commentInputValue = "";
 
@@ -162,8 +164,13 @@ class Like {
   }
 }
 
+function displayUsername(firstName, lastName) {
+  username.textContent = firstName + " " + lastName
+}
+
 const newUser = new User(user.firstName, user.lastName, user.img, user.address, user.friends)
 newUser.renderFriends();
+displayUsername(newUser.firstName, newUser.lastName)
 
 user.posts.forEach(post => {
   const newPost = new Post(post.firstName, post.lastName, post.img, post.postDate, post.postText)

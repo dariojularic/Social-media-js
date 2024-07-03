@@ -18,11 +18,11 @@
 
 .profile-picture-large {
   border-radius: 50%;
-  height: 80px;
-  width: 80px;
-  /* position: absolute; */
-  bottom: 100px;
-  left: 40px;
+  height: 120px;
+  width: 120px;
+  position: absolute;
+  bottom: 0px;
+  left: 32px;
 }
 
 .search-bar {
@@ -89,9 +89,6 @@
   align-self: center;
   height: fit-content;
   width: 80%;
-}
-
-.user {
 }
 
 .user-background-picture {
