@@ -136,6 +136,11 @@
   margin-bottom: 16px;
 }
 
+.post-input {
+  background-color: #807cff;
+  
+}
+
 p {
   font-size: 24px;
   margin: 0px;
@@ -184,7 +189,7 @@ p {
   align-items: center;
 }
 
-.write-comment {
+.write-comment, .post-input {
   background-color: #E6E6FF;
   border: none;
   border-radius: 16px;
@@ -202,6 +207,11 @@ p {
 
 .post-text {
   margin: 24px 0px;
+}
+
+.post-form {
+  display: flex;
+  width: 600px;
 }
 
 .post-name-date {
@@ -265,11 +275,19 @@ p {
   width: 100%;
 }
 
-.add-comment-btn {
+
+.add-comment-btn, .submit-btn {
   border-radius: 8px;
-  background-color: rgb(20, 67, 253);
+  background-color: #807cff;
   color: white;
   margin: 0 8px;
   font-weight: 600;
   cursor: pointer;
+  transition: 0.3s;
+  width: 200px;
+}
+
+.add-comment-btn:hover, .submit-btn:hover {
+  background-color: #6460dd;
+  transition: 0.3s;
 }
