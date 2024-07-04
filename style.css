@@ -263,7 +263,7 @@ p {
   background-color: #E6E6FF;
   border-radius: 16px;
   padding: 8px 12px;
-  width: 100%;
+  width: 90%;
 }
 
 .comment-owner {
@@ -274,6 +274,7 @@ p {
 
 .comment-info {
   padding-left: 16px;
+  width: 100%;
 }
 
 .comment-img {

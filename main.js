@@ -91,10 +91,19 @@ class User {
           const newComment = new Comment(newUser.firstName, newUser.lastName, text, newUser.img)
           post.addComment(newComment)
           event.currentTarget.querySelector(".write-comment").value = ""
+          console.log(post)
+          console.log("current Target", event.currentTarget)
+          const postDom = postsList.querySelector(".post-item")
+          console.log(postDom)
+          const currentCommentsCountDom = postDom.querySelector(".comments-paragraph")
+          console.log(currentCommentsCountDom)
+          currentCommentsCountDom.textContent = `${post.comments.length} Comments`
         }
       })
     })
   }
+
+  //
 
   findPost(postId) {
     return this.posts.find(post => postId === post.id)
@@ -129,7 +138,10 @@ class Post {
     const currentCommentsList = document.getElementById(this.id)
     console.log(currentCommentsList)
     if (!currentCommentsList) return
-    else this.renderComments(currentCommentsList)
+    else {
+      currentCommentsList.innerHTML = ""
+      this.renderComments(currentCommentsList)
+    }
   }
 
   addLike(like) {
@@ -137,8 +149,8 @@ class Post {
   }
 
   renderComments(commentsList) {
-    commentsList.innerHTML = "";
     console.log(this.comments)
+    console.log("commentsList", commentsList)
     this.comments.forEach(comment => {
       const html = `<li class="comment-item">
                       <img src="${comment.img}" class="profile-picture-small comment-img">
@@ -147,7 +159,7 @@ class Post {
                         <p class="comment-text">${comment.textContent}</p>
                       </div>
                     </li>`
-      commentsList.insertAdjacentHTML("afterend", html)
+      commentsList.insertAdjacentHTML("afterbegin", html)
     })
   }
 }
@@ -199,12 +211,16 @@ newUser.renderPosts()
 
 postsList.addEventListener("click", (event) => {
 // na prvo prikazivanje komentara dodaj class is active, a prije samog dodavanja komentara provjerit jel ima klasu is activ. ako ima klasu is activ, samo makni is activ klasu sakrij koment i return
-
+// ako nema is active- renderuj i stavi is active class, a ako ima is active class stavi innerHTML="" i makni is active class
   if (event.target.classList.contains("comments-paragraph") && !event.target.classList.contains("is-active")) {
     event.target.classList.add("is-active")
     const postParent = event.target.closest("li")
     const currentCommentsList = postParent.querySelector(".comments-list");
+    console.log(currentCommentsList)
     currentCommentsList.innerHTML = ""
+    // while (currentCommentsList.firstChild) {
+    //   currentCommentsList.removeChild(currentCommentsList.firstChild)
+    // }
     const currentPost = newUser.findPost(event.target.getAttribute("data-id"))
     currentPost.comments.forEach(comment => {
       const html = `<li class="comment-item">
@@ -214,7 +230,7 @@ postsList.addEventListener("click", (event) => {
                         <p class="comment-text">${comment.textContent}</p>
                       </div>
                     </li>`
-      currentCommentsList.insertAdjacentHTML("afterend", html)
+      currentCommentsList.insertAdjacentHTML("afterbegin", html)
     })
   }
 })
