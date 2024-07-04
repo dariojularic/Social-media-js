@@ -48,7 +48,7 @@ class User {
                           <img src="images/avatar-image2.jpg" class="profile-picture-small">
                           <div class="post-name-date">
                             <p class="post-owner-name">${this.firstName} ${this.lastName}</p>
-                            <p class="post-date">${formatDistanceToNow(post.postDate)}</p>
+                            <p class="post-date">${formatDistanceToNow(post.postDate)} ago</p>
                           </div>
                         </div>
 
@@ -86,15 +86,12 @@ class User {
       postsList.insertAdjacentHTML("afterbegin", html);
       document.querySelector(`.comment-form-${post.id}`).addEventListener("submit", (event) => {
         event.preventDefault()
-        // const newComment = event.target.querySelector(".write-comment").value
         const text = event.currentTarget.querySelector(".write-comment").value
-        const newComment = new Comment(newUser.firstName, newUser.lastName, text, newUser.img)
-        // console.log(event.target.querySelector(".write-comment").value)
-        // console.log("newComment", newComment)
-        // console.log(event.currentTarget.querySelector(".write-comment").value)
-        post.addComment(newComment)
-        // console.log(document.createElement("li"))
-
+        if (text.trim().length > 0) {
+          const newComment = new Comment(newUser.firstName, newUser.lastName, text, newUser.img)
+          post.addComment(newComment)
+          event.currentTarget.querySelector(".write-comment").value = ""
+        }
       })
     })
   }
@@ -130,7 +127,7 @@ class Post {
   addComment(comment) {
     this.comments.push(comment)
     const currentCommentsList = document.getElementById(this.id)
-    // console.log(currentCommentsList)
+    console.log(currentCommentsList)
     if (!currentCommentsList) return
     else this.renderComments(currentCommentsList)
   }
@@ -150,8 +147,7 @@ class Post {
                         <p class="comment-text">${comment.textContent}</p>
                       </div>
                     </li>`
-                    commentsList.insertAdjacentHTML("afterbegin", html)
-
+      commentsList.insertAdjacentHTML("afterend", html)
     })
   }
 }
@@ -200,10 +196,6 @@ user.posts.forEach(post => {
 })
 
 newUser.renderPosts()
-const commentsList = document.querySelector(".comments-list")
-// const commentInput = document.querySelector(".write-comment")
-
-// commentInput.addEventListener("input", () => commentInputValue = commentInput.value)
 
 postsList.addEventListener("click", (event) => {
 // na prvo prikazivanje komentara dodaj class is active, a prije samog dodavanja komentara provjerit jel ima klasu is activ. ako ima klasu is activ, samo makni is activ klasu sakrij koment i return
@@ -214,7 +206,6 @@ postsList.addEventListener("click", (event) => {
     const currentCommentsList = postParent.querySelector(".comments-list");
     currentCommentsList.innerHTML = ""
     const currentPost = newUser.findPost(event.target.getAttribute("data-id"))
-    // currentPost.renderComments()
     currentPost.comments.forEach(comment => {
       const html = `<li class="comment-item">
                       <img src="${comment.img}" class="profile-picture-small comment-img">
@@ -223,15 +214,17 @@ postsList.addEventListener("click", (event) => {
                         <p class="comment-text">${comment.textContent}</p>
                       </div>
                     </li>`
-      currentCommentsList.insertAdjacentHTML("afterbegin", html)
+      currentCommentsList.insertAdjacentHTML("afterend", html)
     })
   }
 })
 
 postForm.addEventListener("submit", (event) => {
   event.preventDefault();
-  const newPost = new Post(newUser.firstName, newUser.lastName, newUser.img, new Date(), postInputValue);
-  newUser.addPost(newPost);
-  newUser.renderPosts();
-  postInput.value = "";
+  if (postInputValue.trim().length > 0) {
+    const newPost = new Post(newUser.firstName, newUser.lastName, newUser.img, new Date(), postInputValue);
+    newUser.addPost(newPost);
+    newUser.renderPosts();
+    postInput.value = "";
+  }
 })

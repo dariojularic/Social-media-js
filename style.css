@@ -171,7 +171,7 @@ p {
 .post-buttons {
   display: flex;
   justify-content: space-between;
-  margin: 8px 0px;
+  margin: 8px 0px 16px 0px;
 }
 
 .post-btn {
@@ -267,9 +267,9 @@ p {
 }
 
 .comment-owner {
-  font-size: 20px;
+  font-size: 18px;
   margin-bottom: 8px;
-  /* font-weight: 500; */
+  font-weight: 600;
 }
 
 .comment-info {
