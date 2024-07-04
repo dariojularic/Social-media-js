@@ -207,6 +207,7 @@ p {
 
 .post-text {
   margin: 24px 0px;
+  word-wrap: break-word;
 }
 
 .post-form {
