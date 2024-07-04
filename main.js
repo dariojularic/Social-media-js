@@ -101,8 +101,6 @@ class User {
     })
   }
 
-  //
-
   findPost(postId) {
     return this.posts.find(post => postId === post.id)
   }
@@ -216,9 +214,6 @@ postsList.addEventListener("click", (event) => {
     const currentCommentsList = postParent.querySelector(".comments-list");
     console.log(currentCommentsList)
     currentCommentsList.innerHTML = ""
-    // while (currentCommentsList.firstChild) {
-    //   currentCommentsList.removeChild(currentCommentsList.firstChild)
-    // }
     const currentPost = newUser.findPost(event.target.getAttribute("data-id"))
     currentPost.comments.forEach(comment => {
       const html = `<li class="comment-item">
