@@ -75,7 +75,7 @@ class User {
                         <form class="comment-form-${post.id} comment-form">
                           <input type="text" placeholder="Write a comment" class="write-comment">
                           <button class="add-comment-btn">Add comment</button>
-                        </form>    
+                        </form>
                       </div>
 
                       <div class="all-comments">
@@ -87,12 +87,14 @@ class User {
       document.querySelector(`.comment-form-${post.id}`).addEventListener("submit", (event) => {
         event.preventDefault()
         // const newComment = event.target.querySelector(".write-comment").value
-        const newComment = new Comment(newUser.firstName, newUser.lastName, event.target.querySelector(".write-comment").value, newUser.img)
+        const text = event.currentTarget.querySelector(".write-comment").value
+        const newComment = new Comment(newUser.firstName, newUser.lastName, text, newUser.img)
         // console.log(event.target.querySelector(".write-comment").value)
         // console.log("newComment", newComment)
+        // console.log(event.currentTarget.querySelector(".write-comment").value)
         post.addComment(newComment)
-        console.log(document.createElement("li"))
-        document.createElement("li")
+        // console.log(document.createElement("li"))
+
       })
     })
   }
@@ -122,29 +124,35 @@ class Post {
     this.postDate = postDate
     this.postText = postText
     this.likes = []
-    this.comments = [] 
+    this.comments = []
   }
 
   addComment(comment) {
     this.comments.push(comment)
+    const currentCommentsList = document.getElementById(this.id)
+    // console.log(currentCommentsList)
+    if (!currentCommentsList) return
+    else this.renderComments(currentCommentsList)
   }
 
   addLike(like) {
     this.likes.push(like)
   }
 
-  renderComments() {
-    // commentsList.innerHTML = "";
+  renderComments(commentsList) {
+    commentsList.innerHTML = "";
+    console.log(this.comments)
     this.comments.forEach(comment => {
       const html = `<li class="comment-item">
                       <img src="${comment.img}" class="profile-picture-small comment-img">
                       <div class="comment-info">
-                        <p class="comment-owner">${comment.firstName} ${comment.lastName}</p>
-                        <p class="comment-text">${comment.commentText}</p>
+                        <p class="comment-owner">${comment.ownersFirstName} ${comment.ownersLastName}</p>
+                        <p class="comment-text">${comment.textContent}</p>
                       </div>
                     </li>`
+                    commentsList.insertAdjacentHTML("afterbegin", html)
+
     })
-    commentsList.insertAdjacentHTML("afterbegin", html)
   }
 }
 
@@ -169,14 +177,14 @@ function displayUsername(firstName, lastName) {
   username.textContent = firstName + " " + lastName
 }
 
-function displayAddress(city, street) {
-  address.textContent = `${city}, ${street}`
+function displayAddress(city, country) {
+  address.textContent = `${city}, ${country}`
 }
 
 const newUser = new User(user.firstName, user.lastName, user.img, user.address, user.friends)
 newUser.renderFriends();
 displayUsername(newUser.firstName, newUser.lastName)
-displayAddress(newUser.address.city, newUser.address.street)
+displayAddress(newUser.address.city, newUser.address.country)
 
 user.posts.forEach(post => {
   const newPost = new Post(newUser.firstName, newUser.lastName, newUser.img, post.postDate, post.postText)
@@ -209,7 +217,7 @@ postsList.addEventListener("click", (event) => {
     // currentPost.renderComments()
     currentPost.comments.forEach(comment => {
       const html = `<li class="comment-item">
-                      <img src="${comment.img}" class="profile-picture-small comment-img"> 
+                      <img src="${comment.img}" class="profile-picture-small comment-img">
                       <div class="comment-info">
                         <p class="comment-owner">${comment.ownersFirstName} ${comment.ownersLastName}</p>
                         <p class="comment-text">${comment.textContent}</p>
