@@ -1,6 +1,5 @@
 import './style.css'
 import { user } from './data'
-import { addDays, format } from "date-fns/fp";
 import { formatDistanceToNow } from "date-fns";
 
 
@@ -11,7 +10,6 @@ const postInput = document.querySelector(".post-input");
 const username = document.querySelector(".user-name");
 const address = document.querySelector(".address");
 let postInputValue = "";
-let commentInputValue = "";
 
 
 
