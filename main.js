@@ -72,7 +72,7 @@ class User {
 
                       <div class="add-comment">
                         <img src="images/avatar-image2.jpg" class="profile-picture-small">
-                        <form class="comment-form-${post.id}">
+                        <form class="comment-form-${post.id} comment-form">
                           <input type="text" placeholder="Write a comment" class="write-comment">
                           <button class="add-comment-btn">Add comment</button>
                         </form>    
@@ -86,11 +86,12 @@ class User {
       postsList.insertAdjacentHTML("afterbegin", html);
       document.querySelector(`.comment-form-${post.id}`).addEventListener("submit", (event) => {
         event.preventDefault()
-        const newComment = event.target.querySelector(".write-comment").value
-        // const newComment = new Comment()
+        // const newComment = event.target.querySelector(".write-comment").value
+        const newComment = new Comment(newUser.firstName, newUser.lastName, event.target.querySelector(".write-comment").value, newUser.img)
         // console.log(event.target.querySelector(".write-comment").value)
-        console.log(newComment)
+        // console.log("newComment", newComment)
         post.addComment(newComment)
+        console.log(document.createElement("li"))
         document.createElement("li")
       })
     })
@@ -178,7 +179,7 @@ displayUsername(newUser.firstName, newUser.lastName)
 displayAddress(newUser.address.city, newUser.address.street)
 
 user.posts.forEach(post => {
-  const newPost = new Post(post.firstName, post.lastName, post.img, post.postDate, post.postText)
+  const newPost = new Post(newUser.firstName, newUser.lastName, newUser.img, post.postDate, post.postText)
   post.comments.forEach(comment => {
     const newComment = new Comment(comment.firstName, comment.lastName, comment.commentText, comment.img);
     newPost.addComment(newComment)

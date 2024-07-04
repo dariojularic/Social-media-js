@@ -1,15 +1,15 @@
 export const user = {
   id: crypto.randomUUID(),
-  firstName: "Mario",
-  lastName: "Milosevic",
+  firstName: "Dario",
+  lastName: "Jularic",
   img: "img/profile5.png",
   address: {
-    country: "Montenegro",
-    city: "Kotor",
-    street: "Novo Naselje b.b.",
+    country: "Croatia",
+    city: "Velika Gorica",
+    street: "Tina Ujevica",
     socialMedia: {
-      facebook: "Mario Milosevic",
-      instagram: "mariomilosevic",
+      facebook: "Dario Jularic",
+      instagram: "dariojularic",
     },
   },
 
