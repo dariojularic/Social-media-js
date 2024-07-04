@@ -21,7 +21,7 @@
   height: 120px;
   width: 120px;
   position: absolute;
-  bottom: 0px;
+  bottom: 40px;
   left: 32px;
 }
 
@@ -237,6 +237,7 @@ p {
 .friend {
   justify-self: center;
   align-self: center;
+  cursor: pointer;
 }
 
 .comments-list {
