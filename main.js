@@ -238,16 +238,18 @@ user.posts.forEach(post => {
 newUser.renderPosts()
 
 findFriends.addEventListener("keyup", () => {
-  const findFriendsList = newUser.getFriends().filter(friend => friend.firstName.toLowerCase().includes(findFriendsValue) || friend.lastName.toLowerCase().includes(findFriendsValue))
-  console.log(findFriendsList)
-  findFriendsUl.classList.remove("hidden")
-  findFriendsList.forEach(friend => {
-    const html = `<li class="find-friend-item">
-                    <img src=${friend.img} class="profile-picture-small">
-                    <p>${friend.firstName} ${friend.lastName}</p>
-                  </li>`;
-    findFriendsUl.insertAdjacentHTML("afterbegin", html)
-  })
+  if (findFriendsValue.trim().length > 0) {
+    const findFriendsList = newUser.getFriends().filter(friend => friend.firstName.toLowerCase().includes(findFriendsValue) || friend.lastName.toLowerCase().includes(findFriendsValue))
+    findFriendsUl.classList.remove("hidden")
+    findFriendsUl.innerHTML = "";
+    findFriendsList.forEach(friend => {
+      const html = `<li class="find-friend-item">
+      <img src=${friend.img} class="profile-picture-small">
+      <p class="find-friend-name">${friend.firstName} ${friend.lastName}</p>
+      </li>`;
+      findFriendsUl.insertAdjacentHTML("afterbegin", html)
+    })
+  } else findFriendsUl.classList.add("hidden")
 })
 
 postsList.addEventListener("click", (event) => {
