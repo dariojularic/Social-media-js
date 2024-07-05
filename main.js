@@ -36,10 +36,12 @@ class User {
   renderPosts() {
     postsList.innerHTML = "";
     this.posts.forEach(post => {
-      let likeParagraphText = "";
-      if (post.likes.length === 1) likeParagraphText = `${post.likes[0].firstName} ${post.likes[0].lastName} likes this post`
-      if (post.likes.length === 2) likeParagraphText = `${post.likes[0].firstName} ${post.likes[0].lastName} and ${post.likes[1].firstName} ${post.likes[1].lastName} likes this post`
-      if (post.likes.length >= 3) likeParagraphText = `${post.likes[0].firstName} ${post.likes[0].lastName}, ${post.likes[1].firstName} ${post.likes[1].lastName} and ${post.likes.length - 2} others likes this post`
+      // let likeParagraphText = "";
+      // if (post.likes.length === 1) likeParagraphText = `${post.likes[0].firstName} ${post.likes[0].lastName} likes this post`
+      // if (post.likes.length === 2) likeParagraphText = `${post.likes[0].firstName} ${post.likes[0].lastName} and ${post.likes[1].firstName} ${post.likes[1].lastName} likes this post`
+      // if (post.likes.length >= 3) likeParagraphText = `${post.likes[0].firstName} ${post.likes[0].lastName}, ${post.likes[1].firstName} ${post.likes[1].lastName} and ${post.likes.length - 2} others likes this post`
+
+      // provjerit ocu ovdje prvo insertat <li> pa onda renderLikes() ili odma u <li> ubacit ko je sve lajkao post?
       const html = `<li class="post-item post-item-${post.id}"d>
                       <div class="post">
                         <div class="post-owner-info">
@@ -54,7 +56,7 @@ class User {
 
                         <div class="likes-comments-number">
                           <div class="likes-container">
-                            <p class="likes-paragraph likes-paragraph-${post.id}">${likeParagraphText}</p>
+                            <p class="likes-paragraph likes-paragraph-${post.id}"></p>
                           </div>
 
                           <div class="comments-container">
@@ -80,10 +82,11 @@ class User {
                         <ul class="comments-list" id=${post.id}></ul>
                       </div>
                     </li>`;
-      // const likesParagraph = postsList.querySelector(`.likes-paragraph-${post.id}`)
-      // post.renderLikes(likesParagraph);
 
       postsList.insertAdjacentHTML("afterbegin", html);
+      const likesParagraph = postsList.querySelector(`.likes-paragraph-${post.id}`)
+      post.renderLikes(likesParagraph);
+
       // koja je razlika ako na sljedecoj liniji napisem postsList.querySelector umjesto document.querySelector???
       document.querySelector(`.comment-form-${post.id}`).addEventListener("submit", (event) => {
         event.preventDefault()
