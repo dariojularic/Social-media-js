@@ -54,7 +54,7 @@ class User {
 
                         <div class="likes-comments-number">
                           <div class="likes-container">
-                            <p class="likes-paragraph">${likeParagraphText}</p>
+                            <p class="likes-paragraph likes-paragraph-${post.id}">${likeParagraphText}</p>
                           </div>
 
                           <div class="comments-container">
@@ -64,7 +64,7 @@ class User {
                       </div>
 
                       <div class="post-buttons">
-                        <button class="like-btn post-btn"><i class="fa-regular fa-thumbs-up"></i> Like</button>
+                        <button class="like-btn-${post.id} post-btn"><i class="fa-regular fa-thumbs-up"></i> Like</button>
                         <button class="comment-btn post-btn" data-id="${post.id}"><i class="fa-regular fa-comments"></i> Comment</button>
                       </div>
 
@@ -80,8 +80,11 @@ class User {
                         <ul class="comments-list" id=${post.id}></ul>
                       </div>
                     </li>`;
+      // const likesParagraph = postsList.querySelector(`.likes-paragraph-${post.id}`)
+      // post.renderLikes(likesParagraph);
 
       postsList.insertAdjacentHTML("afterbegin", html);
+      // koja je razlika ako na sljedecoj liniji napisem postsList.querySelector umjesto document.querySelector???
       document.querySelector(`.comment-form-${post.id}`).addEventListener("submit", (event) => {
         event.preventDefault()
         const text = event.currentTarget.querySelector(".write-comment").value
@@ -89,13 +92,16 @@ class User {
           const newComment = new Comment(newUser.firstName, newUser.lastName, text, newUser.img)
           post.addComment(newComment)
           event.currentTarget.querySelector(".write-comment").value = ""
-          console.log(post)
-          console.log("current Target", event.currentTarget)
           const postDom = postsList.querySelector(`.post-item-${post.id}`)
-          console.log("post dom", postDom)
           const currentCommentsCountDom = postDom.querySelector(".comments-paragraph")
           currentCommentsCountDom.textContent = `${post.comments.length} Comments`
         }
+      })
+
+      document.querySelector(`.like-btn-${post.id}`).addEventListener("click", () => {
+        const like = new Like(newUser.firstName, newUser.lastName)
+        post.addLike(like)
+        const postDom = postsList.querySelector(`.likes-paragraph-${post.id}`)
       })
     })
   }
@@ -131,7 +137,6 @@ class Post {
   addComment(comment) {
     this.comments.push(comment)
     const currentCommentsList = document.getElementById(this.id)
-    console.log(currentCommentsList)
     if (!currentCommentsList) return
     else {
       currentCommentsList.innerHTML = ""
@@ -139,13 +144,7 @@ class Post {
     }
   }
 
-  addLike(like) {
-    this.likes.push(like)
-  }
-
   renderComments(commentsList) {
-    console.log(this.comments)
-    console.log("commentsList", commentsList)
     this.comments.forEach(comment => {
       const html = `<li class="comment-item">
                       <img src="${comment.img}" class="profile-picture-small comment-img">
@@ -156,6 +155,29 @@ class Post {
                     </li>`
       commentsList.insertAdjacentHTML("afterbegin", html)
     })
+  }
+
+  // pregledat ovu funkciju
+  addLike(newLike) {
+    const likesParagraph = document.querySelector(`.likes-paragraph-${this.id}`)
+    if (!this.likes.some(like => like.firstName === newLike.firstName && like.lastName === newLike.lastName)) {
+      this.likes.push(newLike)
+      if (!likesParagraph) return
+      else {
+        likesParagraph.innerHTML = ""
+        this.renderLikes(likesParagraph)
+      }
+    } else {
+      this.likes.pop()
+      likesParagraph.innerHTML = ""
+      this.renderLikes(likesParagraph)
+    }
+  }
+
+  renderLikes(likesParagraph) {
+    if (this.likes.length === 1) likesParagraph.innerHTML = `${this.likes[0].firstName} ${this.likes[0].lastName} likes this post`
+    if (this.likes.length === 2) likesParagraph.innerHTML = `${this.likes[0].firstName} ${this.likes[0].lastName} and ${this.likes[1].firstName} ${this.likes[1].lastName} likes this post`
+    if (this.likes.length >= 3) likesParagraph.innerHTML = `${this.likes[0].firstName} ${this.likes[0].lastName}, ${this.likes[1].firstName} ${this.likes[1].lastName} and ${this.likes.length - 2} others likes this post`
   }
 }
 
@@ -211,7 +233,6 @@ postsList.addEventListener("click", (event) => {
     event.target.classList.add("is-active")
     const postParent = event.target.closest("li")
     const currentCommentsList = postParent.querySelector(".comments-list");
-    console.log(currentCommentsList)
     currentCommentsList.innerHTML = ""
     const currentPost = newUser.findPost(event.target.getAttribute("data-id"))
     currentPost.comments.forEach(comment => {
@@ -234,5 +255,6 @@ postForm.addEventListener("submit", (event) => {
     newUser.addPost(newPost);
     newUser.renderPosts();
     postInput.value = "";
+    postInputValue = ""
   }
 })
