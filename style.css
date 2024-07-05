@@ -3,6 +3,7 @@
   justify-content: space-between;
   align-items: center;
   border-bottom: 1px solid #E6E6FF;
+  padding: 0px 16px;
 }
 
 .container {
@@ -42,7 +43,7 @@
   height: 16px;
 }
 
-.search-input {
+.find-friends {
   border: none;
   background-color: #E6E6FF;
   outline: transparent;
@@ -302,4 +303,14 @@ p {
 .add-comment-btn:hover, .submit-btn:hover {
   background-color: #6460dd;
   transition: 0.3s;
+}
+
+.find-friends-list {
+  list-style: none;
+  border: 1px solid red;
+}
+
+.find-friend-item {
+  display: flex;
+
 }

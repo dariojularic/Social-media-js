@@ -9,9 +9,14 @@ const postForm = document.querySelector(".post-form");
 const postInput = document.querySelector(".post-input");
 const username = document.querySelector(".user-name");
 const address = document.querySelector(".address");
+const findFriends = document.querySelector(".find-friends")
+const findFriendsUl = document.querySelector(".find-friends-list");
 let postInputValue = "";
+let findFriendsValue = "";
 
-
+findFriends.addEventListener("input", () => {
+  findFriendsValue = findFriends.value.toLowerCase()
+})
 
 postInput.addEventListener("input", () => {
   postInputValue = postInput.value
@@ -27,6 +32,10 @@ class User {
     this.address = address
     this.friends = friends
     this.posts = []
+  }
+
+  getFriends() {
+    return this.friends
   }
 
   addPost(post) {
@@ -104,7 +113,6 @@ class User {
       document.querySelector(`.like-btn-${post.id}`).addEventListener("click", () => {
         const like = new Like(newUser.firstName, newUser.lastName)
         post.addLike(like)
-        const postDom = postsList.querySelector(`.likes-paragraph-${post.id}`)
       })
     })
   }
@@ -228,6 +236,19 @@ user.posts.forEach(post => {
 })
 
 newUser.renderPosts()
+
+findFriends.addEventListener("keyup", () => {
+  const findFriendsList = newUser.getFriends().filter(friend => friend.firstName.toLowerCase().includes(findFriendsValue) || friend.lastName.toLowerCase().includes(findFriendsValue))
+  console.log(findFriendsList)
+  findFriendsUl.classList.remove("hidden")
+  findFriendsList.forEach(friend => {
+    const html = `<li class="find-friend-item">
+                    <img src=${friend.img} class="profile-picture-small">
+                    <p>${friend.firstName} ${friend.lastName}</p>
+                  </li>`;
+    findFriendsUl.insertAdjacentHTML("afterbegin", html)
+  })
+})
 
 postsList.addEventListener("click", (event) => {
 // na prvo prikazivanje komentara dodaj class is active, a prije samog dodavanja komentara provjerit jel ima klasu is activ. ako ima klasu is activ, samo makni is activ klasu sakrij koment i return
