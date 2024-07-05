@@ -261,11 +261,13 @@ p {
 
 .comments-list {
   list-style: none;
+  padding-left: 16px;
 }
 
 .comment-item {
   display: flex;
   margin-top: 16px;
+  word-wrap: break-word;
 }
 
 .comment-text {
@@ -273,7 +275,7 @@ p {
   background-color: #d9d9ff;
   border-radius: 16px;
   padding: 8px 12px;
-  width: 90%;
+  width: inherit;
 }
 
 .comment-owner {
@@ -284,7 +286,7 @@ p {
 
 .comment-info {
   padding-left: 16px;
-  width: 100%;
+  width: 85%;
 }
 
 .comment-img {
@@ -294,7 +296,7 @@ p {
 .comment-form {
   display: flex;
   justify-content: space-between;
-  width: 100%;
+  width: 90%;
 }
 
 
@@ -342,4 +344,13 @@ p {
 
 .hidden {
   display: none;
+}
+
+.number-of-friends {
+  font-size: 16px;
+}
+
+h4 {
+  font-size: 24px;
+  margin: 8px 0px;
 }

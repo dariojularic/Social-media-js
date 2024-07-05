@@ -11,6 +11,7 @@ const username = document.querySelector(".user-name");
 const address = document.querySelector(".address");
 const findFriends = document.querySelector(".find-friends")
 const findFriendsUl = document.querySelector(".find-friends-list");
+const friendsNumber = document.querySelector(".number-of-friends");
 let postInputValue = "";
 let findFriendsValue = "";
 
@@ -217,10 +218,15 @@ function displayAddress(city, country) {
   address.textContent = `${city}, ${country}`
 }
 
+function displayNumberOfFriends() {
+  friendsNumber.textContent = `${newUser.friends.length} friends`
+}
+
 const newUser = new User(user.firstName, user.lastName, user.img, user.address, user.friends)
 newUser.renderFriends();
 displayUsername(newUser.firstName, newUser.lastName)
 displayAddress(newUser.address.city, newUser.address.country)
+displayNumberOfFriends()
 
 user.posts.forEach(post => {
   const newPost = new Post(newUser.firstName, newUser.lastName, newUser.img, post.postDate, post.postText)
