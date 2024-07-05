@@ -40,7 +40,7 @@ class User {
       if (post.likes.length === 1) likeParagraphText = `${post.likes[0].firstName} ${post.likes[0].lastName} likes this post`
       if (post.likes.length === 2) likeParagraphText = `${post.likes[0].firstName} ${post.likes[0].lastName} and ${post.likes[1].firstName} ${post.likes[1].lastName} likes this post`
       if (post.likes.length >= 3) likeParagraphText = `${post.likes[0].firstName} ${post.likes[0].lastName}, ${post.likes[1].firstName} ${post.likes[1].lastName} and ${post.likes.length - 2} others likes this post`
-      const html = `<li class="post-item" data-id="${post.id}">
+      const html = `<li class="post-item post-item-${post.id}"d>
                       <div class="post">
                         <div class="post-owner-info">
                           <img src="images/avatar-image2.jpg" class="profile-picture-small">
@@ -91,10 +91,9 @@ class User {
           event.currentTarget.querySelector(".write-comment").value = ""
           console.log(post)
           console.log("current Target", event.currentTarget)
-          const postDom = postsList.querySelector(".post-item")
-          console.log(postDom)
+          const postDom = postsList.querySelector(`.post-item-${post.id}`)
+          console.log("post dom", postDom)
           const currentCommentsCountDom = postDom.querySelector(".comments-paragraph")
-          console.log(currentCommentsCountDom)
           currentCommentsCountDom.textContent = `${post.comments.length} Comments`
         }
       })
