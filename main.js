@@ -182,7 +182,7 @@ class Post {
       if (!likesParagraph) return
       else {
         const likeBtn = document.querySelector(`.like-btn-${this.id}`)
-        likeBtn.innerHTML = `<i class="fa-solid fa-thumbs-up"></i> Like`
+        likeBtn.innerHTML = `<i class="fa-solid fa-thumbs-up liked-icon"></i> Like`
         likesParagraph.innerHTML = ""
         this.renderLikes(likesParagraph)
       }
