@@ -70,7 +70,7 @@ class User {
                           </div>
 
                           <div class="comments-container">
-                            <p class="comments-paragraph" data-id="${post.id}">${post.comments.length} Comments</p>
+                            <p class="comments-paragraph comments-paragraph-${post.id}" data-id="${post.id}">${post.comments.length} Comments</p>
                           </div>
                         </div>
                       </div>
@@ -104,8 +104,11 @@ class User {
         if (text.trim().length > 0) {
           const newComment = new Comment(newUser.firstName, newUser.lastName, text, newUser.img)
           post.addComment(newComment)
+          // const commentsParagraph = postsList.querySelector(`.comments-paragraph-${post.id}`)
           event.currentTarget.querySelector(".write-comment").value = ""
           const postDom = postsList.querySelector(`.post-item-${post.id}`)
+          const commentsParagraph = postDom.querySelector(`.comments-paragraph-${post.id}`)
+          if (!commentsParagraph.classList.add("is-active")) commentsParagraph.classList.add("is-active")
           const currentCommentsCountDom = postDom.querySelector(".comments-paragraph")
           currentCommentsCountDom.textContent = `${post.comments.length} Comments`
         }
@@ -152,6 +155,8 @@ class Post {
     if (!currentCommentsList) return
     else {
       currentCommentsList.innerHTML = ""
+      currentCommentsList.classList.add("is-active")
+      console.log(currentCommentsList)
       this.renderComments(currentCommentsList)
     }
   }
@@ -262,6 +267,7 @@ postsList.addEventListener("click", (event) => {
 // na prvo prikazivanje komentara dodaj class is active, a prije samog dodavanja komentara provjerit jel ima klasu is activ. ako ima klasu is activ, samo makni is activ klasu sakrij koment i return
 // ako nema is active- renderuj i stavi is active class, a ako ima is active class stavi innerHTML="" i makni is active class
   if (event.target.classList.contains("comments-paragraph") && !event.target.classList.contains("is-active")) {
+    console.log("event.target", event.target)
     event.target.classList.add("is-active")
     const postParent = event.target.closest("li")
     const currentCommentsList = postParent.querySelector(".comments-list");
@@ -277,6 +283,11 @@ postsList.addEventListener("click", (event) => {
                     </li>`
       currentCommentsList.insertAdjacentHTML("afterbegin", html)
     })
+  } else {
+    const postParent = event.target.closest("li")
+    const currentCommentsList = postParent.querySelector(".comments-list");
+    currentCommentsList.innerHTML = "";
+    event.target.classList.remove("is-active")
   }
 })
 
