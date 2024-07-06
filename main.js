@@ -237,7 +237,7 @@ setTimeout(() => {
   mainContainer.style.opacity = 1;
   mainContainer.style.transition = "1s";
   loader.style.opacity = 0;
-}, 2000);
+}, 1500);
 
 const newUser = new User(user.firstName, user.lastName, user.img, user.address, user.friends)
 newUser.renderFriends();
