@@ -287,7 +287,10 @@ postsList.addEventListener("click", (event) => {
                     </li>`
       currentCommentsList.insertAdjacentHTML("afterbegin", html)
     })
-  } else {
+    return
+  }
+
+  if (event.target.classList.contains("comments-paragraph") && event.target.classList.contains("is-active")){
     const postParent = event.target.closest("li")
     const currentCommentsList = postParent.querySelector(".comments-list");
     currentCommentsList.innerHTML = "";
