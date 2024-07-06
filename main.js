@@ -12,6 +12,8 @@ const address = document.querySelector(".address");
 const findFriends = document.querySelector(".find-friends")
 const findFriendsUl = document.querySelector(".find-friends-list");
 const friendsNumber = document.querySelector(".number-of-friends");
+const mainContainer = document.querySelector(".container");
+const loader = document.querySelector(".loader");
 let postInputValue = "";
 let findFriendsValue = "";
 
@@ -230,6 +232,12 @@ function displayAddress(city, country) {
 function displayNumberOfFriends() {
   friendsNumber.textContent = `${newUser.friends.length} friends`
 }
+
+setTimeout(() => {
+  mainContainer.style.opacity = 1;
+  mainContainer.style.transition = "1s";
+  loader.style.opacity = 0;
+}, 2000);
 
 const newUser = new User(user.firstName, user.lastName, user.img, user.address, user.friends)
 newUser.renderFriends();
