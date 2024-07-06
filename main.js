@@ -79,13 +79,13 @@ class User {
 
                       <div class="post-buttons">
                         <button class="like-btn-${post.id} post-btn"><i class="fa-regular fa-thumbs-up"></i> Like</button>
-                        <button class="comment-btn post-btn" data-id="${post.id}"><i class="fa-regular fa-comments"></i> Comment</button>
+                        <button class="comment-btn comment-btn-${post.id} post-btn" data-id="${post.id}"><i class="fa-regular fa-comments"></i> Comment</button>
                       </div>
 
                       <div class="add-comment">
                         <img src="images/avatar-image2.jpg" class="profile-picture-small">
                         <form class="comment-form-${post.id} comment-form">
-                          <input type="text" placeholder="Write a comment" class="write-comment">
+                          <input type="text" placeholder="Write a comment" class="write-comment write-comment-${post.id}">
                           <button class="add-comment-btn">Add comment</button>
                         </form>
                       </div>
@@ -119,6 +119,10 @@ class User {
       document.querySelector(`.like-btn-${post.id}`).addEventListener("click", () => {
         const like = new Like(newUser.firstName, newUser.lastName)
         post.addLike(like)
+      })
+
+      document.querySelector(`.comment-btn-${post.id}`).addEventListener("click", () => {
+        document.querySelector(`.write-comment-${post.id}`).focus()
       })
     })
   }
