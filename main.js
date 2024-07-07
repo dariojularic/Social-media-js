@@ -2,7 +2,6 @@ import './style.css'
 import { user } from './data'
 import { formatDistanceToNow } from "date-fns";
 
-
 const postsList = document.querySelector(".posts");
 const friendsList = document.querySelector(".friends-list");
 const postForm = document.querySelector(".post-form");
@@ -14,17 +13,12 @@ const findFriendsUl = document.querySelector(".find-friends-list");
 const friendsNumber = document.querySelector(".number-of-friends");
 const mainContainer = document.querySelector(".container");
 const loader = document.querySelector(".loader");
+
 let postInputValue = "";
 let findFriendsValue = "";
 
-findFriends.addEventListener("input", () => {
-  findFriendsValue = findFriends.value.toLowerCase()
-})
-
-postInput.addEventListener("input", () => {
-  postInputValue = postInput.value
-  const time = new Date()
-})
+findFriends.addEventListener("input", () => findFriendsValue = findFriends.value.toLowerCase())
+postInput.addEventListener("input", () => postInputValue = postInput.value)
 
 class User {
   constructor(firstName, lastName, img, address, friends) {
@@ -53,7 +47,8 @@ class User {
       // if (post.likes.length === 2) likeParagraphText = `${post.likes[0].firstName} ${post.likes[0].lastName} and ${post.likes[1].firstName} ${post.likes[1].lastName} likes this post`
       // if (post.likes.length >= 3) likeParagraphText = `${post.likes[0].firstName} ${post.likes[0].lastName}, ${post.likes[1].firstName} ${post.likes[1].lastName} and ${post.likes.length - 2} others likes this post`
 
-      // provjerit ocu ovdje prvo insertat <li> pa onda renderLikes() ili odma u <li> ubacit ko je sve lajkao post?
+      // jel ok da imam puno post.id u <li> dolje?
+      // provjerit ocu ovdje prvo insertat <li> pa onda renderLikes() ili odma u <li> ubacit ko je sve lajkao post? likes paragraph
       const html = `<li class="post-item post-item-${post.id}"d>
                       <div class="post">
                         <div class="post-owner-info">
@@ -72,14 +67,14 @@ class User {
                           </div>
 
                           <div class="comments-container">
-                            <p class="comments-paragraph comments-paragraph-${post.id}" data-id="${post.id}">${post.comments.length} Comments</p>
+                            <p class="comments-paragraph comments-paragraph-${post.id}">${post.comments.length} Comments</p>
                           </div>
                         </div>
                       </div>
 
                       <div class="post-buttons">
                         <button class="like-btn-${post.id} post-btn"><i class="fa-regular fa-thumbs-up"></i> Like</button>
-                        <button class="comment-btn comment-btn-${post.id} post-btn" data-id="${post.id}"><i class="fa-regular fa-comments"></i> Comment</button>
+                        <button class="comment-btn comment-btn-${post.id} post-btn"><i class="fa-regular fa-comments"></i> Comment</button>
                       </div>
 
                       <div class="add-comment">
@@ -283,7 +278,6 @@ postsList.addEventListener("click", (event) => {
 // na prvo prikazivanje komentara dodaj class is active, a prije samog dodavanja komentara provjerit jel ima klasu is activ. ako ima klasu is activ, samo makni is activ klasu sakrij koment i return
 // ako nema is active- renderuj i stavi is active class, a ako ima is active class stavi innerHTML="" i makni is active class
   if (event.target.classList.contains("comments-paragraph") && !event.target.classList.contains("is-active")) {
-    console.log("event.target", event.target)
     event.target.classList.add("is-active")
     const postParent = event.target.closest("li")
     const currentCommentsList = postParent.querySelector(".comments-list");
