@@ -13,6 +13,9 @@ const findFriendsUl = document.querySelector(".find-friends-list");
 const friendsNumber = document.querySelector(".number-of-friends");
 const mainContainer = document.querySelector(".container");
 const loader = document.querySelector(".loader");
+const navbarPicture = document.querySelector(".my-navbar-picture");
+const profilePicture = document.querySelector(".my-profile-picture");
+const backgroundImage = document.querySelector(".background-image");
 
 let postInputValue = "";
 let findFriendsValue = "";
@@ -21,11 +24,12 @@ findFriends.addEventListener("input", () => findFriendsValue = findFriends.value
 postInput.addEventListener("input", () => postInputValue = postInput.value)
 
 class User {
-  constructor(firstName, lastName, img, address, friends) {
+  constructor(firstName, lastName, img, backgroundImg, address, friends) {
     this.id = crypto.randomUUID()
     this.firstName = firstName
     this.lastName = lastName
     this.img = img
+    this.backgroundImg = backgroundImg
     this.address = address
     this.friends = friends
     this.posts = []
@@ -228,17 +232,24 @@ function displayNumberOfFriends() {
   friendsNumber.textContent = `${newUser.friends.length} friends`
 }
 
+function setProfilePictures(image, backgroundImg) {
+  navbarPicture.setAttribute("src", image)
+  profilePicture.setAttribute("src", image)
+  backgroundImage.setAttribute("src", backgroundImg)
+}
+
 setTimeout(() => {
   mainContainer.style.opacity = 1;
   mainContainer.style.transition = "1s";
   loader.style.opacity = 0;
 }, 1500);
 
-const newUser = new User(user.firstName, user.lastName, user.img, user.address, user.friends)
+const newUser = new User(user.firstName, user.lastName, user.img, user.backgroundImg, user.address, user.friends)
 newUser.renderFriends();
 displayUsername(newUser.firstName, newUser.lastName)
 displayAddress(newUser.address.city, newUser.address.country)
 displayNumberOfFriends()
+setProfilePictures(newUser.img, newUser.backgroundImg)
 
 user.posts.forEach(post => {
   const newPost = new Post(newUser.firstName, newUser.lastName, newUser.img, post.postDate, post.postText)

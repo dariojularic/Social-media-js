@@ -3,6 +3,7 @@ export const user = {
   firstName: "Dario",
   lastName: "Jularic",
   img: "images/avatar-image2.jpg",
+  backgroundImg: "images/background-image.jpg",
   address: {
     country: "Croatia",
     city: "Zagreb",
