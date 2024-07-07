@@ -184,14 +184,12 @@ class Post {
       else {
         const likeBtn = document.querySelector(`.like-btn-${this.id}`)
         likeBtn.innerHTML = `<i class="fa-solid fa-thumbs-up liked-icon"></i> Like`
-        likesParagraph.innerHTML = ""
         this.renderLikes(likesParagraph)
       }
     } else {
       const likeBtn = document.querySelector(`.like-btn-${this.id}`)
       likeBtn.innerHTML = `<i class="fa-regular fa-thumbs-up"></i> Like`
       this.likes.pop()
-      likesParagraph.innerHTML = ""
       this.renderLikes(likesParagraph)
     }
   }
