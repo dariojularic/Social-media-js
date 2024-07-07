@@ -67,7 +67,7 @@ class User {
                           </div>
 
                           <div class="comments-container">
-                            <p class="comments-paragraph comments-paragraph-${post.id}">${post.comments.length} Comments</p>
+                            <p class="comments-paragraph comments-paragraph-${post.id}" data-id="${post.id}">${post.comments.length} Comments</p>
                           </div>
                         </div>
                       </div>
@@ -101,7 +101,6 @@ class User {
         if (text.trim().length > 0) {
           const newComment = new Comment(newUser.firstName, newUser.lastName, text, newUser.img)
           post.addComment(newComment)
-          // const commentsParagraph = postsList.querySelector(`.comments-paragraph-${post.id}`)
           event.currentTarget.querySelector(".write-comment").value = ""
           const postDom = postsList.querySelector(`.post-item-${post.id}`)
           const commentsParagraph = postDom.querySelector(`.comments-paragraph-${post.id}`)
@@ -116,9 +115,7 @@ class User {
         post.addLike(like)
       })
 
-      document.querySelector(`.comment-btn-${post.id}`).addEventListener("click", () => {
-        document.querySelector(`.write-comment-${post.id}`).focus()
-      })
+      document.querySelector(`.comment-btn-${post.id}`).addEventListener("click", () => document.querySelector(`.write-comment-${post.id}`).focus())
     })
   }
 
@@ -174,7 +171,7 @@ class Post {
     })
   }
 
-  // pregledat ovu funkciju
+  // pregledat ovu funkciju, problem je sto moram provjerit jesam li vec lajko post
   addLike(newLike) {
     const likesParagraph = document.querySelector(`.likes-paragraph-${this.id}`)
     if (!this.likes.some(like => like.firstName === newLike.firstName && like.lastName === newLike.lastName)) {
