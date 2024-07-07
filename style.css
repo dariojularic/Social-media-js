@@ -15,7 +15,6 @@ body {
   display: flex;
   flex-direction: column;
   opacity: 0;
-  background-color: red;
 }
 
 .profile-picture-small {
