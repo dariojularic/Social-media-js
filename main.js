@@ -46,13 +46,6 @@ class User {
   renderPosts() {
     postsList.innerHTML = "";
     this.posts.forEach(post => {
-      // let likeParagraphText = "";
-      // if (post.likes.length === 1) likeParagraphText = `${post.likes[0].firstName} ${post.likes[0].lastName} likes this post`
-      // if (post.likes.length === 2) likeParagraphText = `${post.likes[0].firstName} ${post.likes[0].lastName} and ${post.likes[1].firstName} ${post.likes[1].lastName} likes this post`
-      // if (post.likes.length >= 3) likeParagraphText = `${post.likes[0].firstName} ${post.likes[0].lastName}, ${post.likes[1].firstName} ${post.likes[1].lastName} and ${post.likes.length - 2} others likes this post`
-
-      // jel ok da imam puno post.id u <li> dolje?
-      // provjerit ocu ovdje prvo insertat <li> pa onda renderLikes() ili odma u <li> ubacit ko je sve lajkao post? likes paragraph
       const html = `<li class="post-item post-item-${post.id}"d>
                       <div class="post">
                         <div class="post-owner-info">
@@ -98,8 +91,7 @@ class User {
       const likesParagraph = postsList.querySelector(`.likes-paragraph-${post.id}`)
       post.renderLikes(likesParagraph);
 
-      // koja je razlika ako na sljedecoj liniji napisem postsList.querySelector umjesto document.querySelector???
-      document.querySelector(`.comment-form-${post.id}`).addEventListener("submit", (event) => {
+      postsList.querySelector(`.comment-form-${post.id}`).addEventListener("submit", (event) => {
         event.preventDefault()
         const text = event.currentTarget.querySelector(".write-comment").value
         if (text.trim().length > 0) {
@@ -108,18 +100,18 @@ class User {
           event.currentTarget.querySelector(".write-comment").value = ""
           const postDom = postsList.querySelector(`.post-item-${post.id}`)
           const commentsParagraph = postDom.querySelector(`.comments-paragraph-${post.id}`)
-          if (!commentsParagraph.classList.add("is-active")) commentsParagraph.classList.add("is-active")
+          if (!commentsParagraph.classList.contains("is-active")) commentsParagraph.classList.add("is-active")
           const currentCommentsCountDom = postDom.querySelector(".comments-paragraph")
           currentCommentsCountDom.textContent = `${post.comments.length} Comments`
         }
       })
 
-      document.querySelector(`.like-btn-${post.id}`).addEventListener("click", () => {
+      postsList.querySelector(`.like-btn-${post.id}`).addEventListener("click", () => {
         const like = new Like(newUser.firstName, newUser.lastName)
         post.addLike(like)
       })
 
-      document.querySelector(`.comment-btn-${post.id}`).addEventListener("click", () => document.querySelector(`.write-comment-${post.id}`).focus())
+      postsList.querySelector(`.comment-btn-${post.id}`).addEventListener("click", () => postsList.querySelector(`.write-comment-${post.id}`).focus())
     })
   }
 
@@ -175,7 +167,6 @@ class Post {
     })
   }
 
-  // pregledat ovu funkciju, problem je sto moram provjerit jesam li vec lajko post
   addLike(newLike) {
     const likesParagraph = document.querySelector(`.likes-paragraph-${this.id}`)
     if (!this.likes.some(like => like.firstName === newLike.firstName && like.lastName === newLike.lastName)) {
@@ -195,6 +186,7 @@ class Post {
   }
 
   renderLikes(likesParagraph) {
+    if (this.likes.length <= 0) likesParagraph.innerHTML = ""
     if (this.likes.length === 1) likesParagraph.innerHTML = `${this.likes[0].firstName} ${this.likes[0].lastName} likes this post`
     if (this.likes.length === 2) likesParagraph.innerHTML = `${this.likes[0].firstName} ${this.likes[0].lastName} and ${this.likes[1].firstName} ${this.likes[1].lastName} likes this post`
     if (this.likes.length >= 3) likesParagraph.innerHTML = `${this.likes[0].firstName} ${this.likes[0].lastName}, ${this.likes[1].firstName} ${this.likes[1].lastName} and ${this.likes.length - 2} others likes this post`
@@ -271,9 +263,9 @@ findFriends.addEventListener("keyup", () => {
     findFriendsUl.innerHTML = "";
     findFriendsList.forEach(friend => {
       const html = `<li class="find-friend-item">
-      <img src=${friend.img} class="profile-picture-small">
-      <p class="find-friend-name">${friend.firstName} ${friend.lastName}</p>
-      </li>`;
+                      <img src=${friend.img} class="profile-picture-small">
+                      <p class="find-friend-name">${friend.firstName} ${friend.lastName}</p>
+                    </li>`;
       findFriendsUl.insertAdjacentHTML("afterbegin", html)
     })
   } else findFriendsUl.classList.add("hidden")
